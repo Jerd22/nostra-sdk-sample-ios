@@ -13,8 +13,8 @@
 		AFC2A7DC1CC3786400FC6AFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC2A7DA1CC3786400FC6AFA /* Main.storyboard */; };
 		AFC2A7DE1CC3786400FC6AFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFC2A7DD1CC3786400FC6AFA /* Assets.xcassets */; };
 		AFC2A7E11CC3786400FC6AFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC2A7DF1CC3786400FC6AFA /* LaunchScreen.storyboard */; };
-		FC6006021D747C7C00B3E77F /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6006011D747C7C00B3E77F /* NOSTRASDK.framework */; };
-		FC6006031D747C7C00B3E77F /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC6006011D747C7C00B3E77F /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC2D5CC51D7C03B400E0C6D8 /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2D5CC41D7C03B400E0C6D8 /* NOSTRASDK.framework */; };
+		FC2D5CC61D7C03B400E0C6D8 /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC2D5CC41D7C03B400E0C6D8 /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FCFB02D31D75600700145BBE /* MarkOnMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB02D21D75600700145BBE /* MarkOnMapViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,7 +25,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FC6006031D747C7C00B3E77F /* NOSTRASDK.framework in Embed Frameworks */,
+				FC2D5CC61D7C03B400E0C6D8 /* NOSTRASDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,7 +41,7 @@
 		AFC2A7DD1CC3786400FC6AFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFC2A7E01CC3786400FC6AFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFC2A7E21CC3786400FC6AFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC6006011D747C7C00B3E77F /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = /Users/itthisakphueaksri/Documents/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<absolute>"; };
+		FC2D5CC41D7C03B400E0C6D8 /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = /Library/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<absolute>"; };
 		FCFB02D21D75600700145BBE /* MarkOnMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkOnMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC6006021D747C7C00B3E77F /* NOSTRASDK.framework in Frameworks */,
+				FC2D5CC51D7C03B400E0C6D8 /* NOSTRASDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +76,7 @@
 		AFC2A7D51CC3786400FC6AFA /* RouteSample */ = {
 			isa = PBXGroup;
 			children = (
-				FC6006011D747C7C00B3E77F /* NOSTRASDK.framework */,
+				FC2D5CC41D7C03B400E0C6D8 /* NOSTRASDK.framework */,
 				AFC2A7D61CC3786400FC6AFA /* AppDelegate.swift */,
 				AFC2A7D81CC3786400FC6AFA /* RouteViewController.swift */,
 				AF725C541CE878E100A040AA /* RouteDetailViewController.swift */,
@@ -282,7 +282,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
-					"$(HOME)/Documents/NOSTRASDK/**",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
 				);
 				INFOPLIST_FILE = RouteSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -305,7 +305,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
-					"$(HOME)/Documents/NOSTRASDK/**",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
 				);
 				INFOPLIST_FILE = RouteSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

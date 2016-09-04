@@ -16,8 +16,8 @@
 		AFC2A8361CC378BB00FC6AFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC2A8341CC378BB00FC6AFA /* Main.storyboard */; };
 		AFC2A8381CC378BB00FC6AFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFC2A8371CC378BB00FC6AFA /* Assets.xcassets */; };
 		AFC2A83B1CC378BB00FC6AFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC2A8391CC378BB00FC6AFA /* LaunchScreen.storyboard */; };
-		FC55697E1D6FFBF8006A8D13 /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC55697D1D6FFBF8006A8D13 /* NOSTRASDK.framework */; };
-		FC55697F1D6FFBF8006A8D13 /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC55697D1D6FFBF8006A8D13 /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC2D5CBF1D7C038A00E0C6D8 /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2D5CBE1D7C038A00E0C6D8 /* NOSTRASDK.framework */; };
+		FC2D5CC01D7C038A00E0C6D8 /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC2D5CBE1D7C038A00E0C6D8 /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,7 +27,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FC55697F1D6FFBF8006A8D13 /* NOSTRASDK.framework in Embed Frameworks */,
+				FC2D5CC01D7C038A00E0C6D8 /* NOSTRASDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,7 +46,7 @@
 		AFC2A8371CC378BB00FC6AFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFC2A83A1CC378BB00FC6AFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFC2A83C1CC378BB00FC6AFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC55697D1D6FFBF8006A8D13 /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = ../../../../../Documents/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<group>"; };
+		FC2D5CBE1D7C038A00E0C6D8 /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = /Library/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC55697E1D6FFBF8006A8D13 /* NOSTRASDK.framework in Frameworks */,
+				FC2D5CBF1D7C038A00E0C6D8 /* NOSTRASDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +80,7 @@
 		AFC2A82F1CC378BB00FC6AFA /* FuelSample */ = {
 			isa = PBXGroup;
 			children = (
-				FC55697D1D6FFBF8006A8D13 /* NOSTRASDK.framework */,
+				FC2D5CBE1D7C038A00E0C6D8 /* NOSTRASDK.framework */,
 				AFC2A8301CC378BB00FC6AFA /* AppDelegate.swift */,
 				AFC2A8341CC378BB00FC6AFA /* Main.storyboard */,
 				AFC2A8371CC378BB00FC6AFA /* Assets.xcassets */,
@@ -289,8 +289,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(HOME)/Documents/NOSTRASDK/**",
 					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
 				);
 				INFOPLIST_FILE = FuelSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -312,8 +312,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(HOME)/Documents/NOSTRASDK/**",
 					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
 				);
 				INFOPLIST_FILE = FuelSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

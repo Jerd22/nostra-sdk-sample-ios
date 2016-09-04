@@ -2,8 +2,7 @@
 //  TravelByViewController.swift
 //  MultiModalSample
 //
-//  Created by Itthisak Phueaksri on 8/31/16.
-//  Copyright © 2016 gissoft. All rights reserved.
+//  Copyright © 2559 Globtech. All rights reserved.
 //
 
 import UIKit

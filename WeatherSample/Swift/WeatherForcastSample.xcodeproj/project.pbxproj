@@ -12,8 +12,8 @@
 		AFC2A8181CC378A500FC6AFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC2A8161CC378A500FC6AFA /* Main.storyboard */; };
 		AFC2A81A1CC378A500FC6AFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFC2A8191CC378A500FC6AFA /* Assets.xcassets */; };
 		AFC2A81D1CC378A500FC6AFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC2A81B1CC378A500FC6AFA /* LaunchScreen.storyboard */; };
-		FC6005FF1D747A9C00B3E77F /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6005FE1D747A9C00B3E77F /* NOSTRASDK.framework */; };
-		FC6006001D747A9C00B3E77F /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC6005FE1D747A9C00B3E77F /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC2D5CCE1D7C03EA00E0C6D8 /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2D5CCD1D7C03EA00E0C6D8 /* NOSTRASDK.framework */; };
+		FC2D5CCF1D7C03EA00E0C6D8 /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC2D5CCD1D7C03EA00E0C6D8 /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,7 +23,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FC6006001D747A9C00B3E77F /* NOSTRASDK.framework in Embed Frameworks */,
+				FC2D5CCF1D7C03EA00E0C6D8 /* NOSTRASDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -38,7 +38,7 @@
 		AFC2A8191CC378A500FC6AFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFC2A81C1CC378A500FC6AFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFC2A81E1CC378A500FC6AFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC6005FE1D747A9C00B3E77F /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = /Users/itthisakphueaksri/Documents/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<absolute>"; };
+		FC2D5CCD1D7C03EA00E0C6D8 /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = /Library/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC6005FF1D747A9C00B3E77F /* NOSTRASDK.framework in Frameworks */,
+				FC2D5CCE1D7C03EA00E0C6D8 /* NOSTRASDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,7 +72,7 @@
 		AFC2A8111CC378A500FC6AFA /* WeatherForcastSample */ = {
 			isa = PBXGroup;
 			children = (
-				FC6005FE1D747A9C00B3E77F /* NOSTRASDK.framework */,
+				FC2D5CCD1D7C03EA00E0C6D8 /* NOSTRASDK.framework */,
 				AFC2A8121CC378A500FC6AFA /* AppDelegate.swift */,
 				AFC2A8141CC378A500FC6AFA /* WeatherViewController.swift */,
 				AFC2A8161CC378A500FC6AFA /* Main.storyboard */,
@@ -274,7 +274,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
-					"$(HOME)/Documents/NOSTRASDK/**",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
 				);
 				INFOPLIST_FILE = WeatherForcastSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -297,7 +297,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
-					"$(HOME)/Documents/NOSTRASDK/**",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
 				);
 				INFOPLIST_FILE = WeatherForcastSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

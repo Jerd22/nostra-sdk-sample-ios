@@ -2,8 +2,7 @@
 //  FuelResultPriceViewController.swift
 //  FuelSample
 //
-//  Created by Itthisak Phueaksri on 5/15/2559 BE.
-//  Copyright © 2559 gissoft. All rights reserved.
+//  Copyright © 2559 Globtech. All rights reserved.
 //
 
 import UIKit
@@ -25,7 +24,6 @@ class FuelResultPriceViewController: UIViewController, UITableViewDataSource, UI
         
         switch indexPath.row {
         case 0:
-            
             lblPrice.text = result?.diesel != nil ? String.init(format: "%.2f", (result?.diesel)!) : "-";
         case 1:
             lblPrice.text = result?.dieselPremium != nil ? String.init(format: "%.2f", (result?.dieselPremium)!) : "-";

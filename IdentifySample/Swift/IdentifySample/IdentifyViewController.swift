@@ -2,8 +2,7 @@
 //  ViewController.swift
 //  IdentifySample
 //
-//  Created by Itthisak Phueaksri on 4/17/2559 BE.
-//  Copyright © 2559 gissoft. All rights reserved.
+//  Copyright © 2559 Globtech. All rights reserved.
 //
 
 import UIKit
@@ -61,6 +60,7 @@ class IdentifyViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapV
                     let url = NSURL(string: mapPermisson!.serviceUrl_L);
                     let cred = AGSCredential(token: mapPermisson?.serviceToken_L, referer: referrer);
                     let tiledLayer = AGSTiledMapServiceLayer(URL: url, credential: cred)
+                    tiledLayer.renderNativeResolution = true;
                     tiledLayer.delegate = self;
                     
                     mapView.addMapLayer(tiledLayer, withName: mapPermisson!.serviceName);

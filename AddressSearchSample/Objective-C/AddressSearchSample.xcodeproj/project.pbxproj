@@ -1,0 +1,374 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AFB144251CC37DC40095EDCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB144241CC37DC40095EDCE /* main.m */; };
+		AFB144281CC37DC40095EDCE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB144271CC37DC40095EDCE /* AppDelegate.m */; };
+		AFB1442E1CC37DC40095EDCE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB1442C1CC37DC40095EDCE /* Main.storyboard */; };
+		AFB144301CC37DC40095EDCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFB1442F1CC37DC40095EDCE /* Assets.xcassets */; };
+		AFB144331CC37DC40095EDCE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB144311CC37DC40095EDCE /* LaunchScreen.storyboard */; };
+		AFCCBE0E1D786E5D0016CCE4 /* AddressSearchKeywordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBE0D1D786E5D0016CCE4 /* AddressSearchKeywordViewController.m */; };
+		AFCCBE111D786E6E0016CCE4 /* AddressSearchAttributesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBE101D786E6E0016CCE4 /* AddressSearchAttributesViewController.m */; };
+		AFCCBE141D786E7E0016CCE4 /* AddressSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBE131D786E7E0016CCE4 /* AddressSearchResultViewController.m */; };
+		AFCCBE171D786E8E0016CCE4 /* AddressSearchMapResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBE161D786E8E0016CCE4 /* AddressSearchMapResultViewController.m */; };
+		FC36D8921D795FAC00132E81 /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC36D8911D795FAC00132E81 /* NOSTRASDK.framework */; };
+		FC36D8931D795FAC00132E81 /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC36D8911D795FAC00132E81 /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AFCCBDE71D786AC40016CCE4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FC36D8931D795FAC00132E81 /* NOSTRASDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AFB144201CC37DC40095EDCE /* AddressSearchSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AddressSearchSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFB144241CC37DC40095EDCE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AFB144261CC37DC40095EDCE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AFB144271CC37DC40095EDCE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AFB1442D1CC37DC40095EDCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AFB1442F1CC37DC40095EDCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AFB144321CC37DC40095EDCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AFB144341CC37DC40095EDCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFCCBE0C1D786E5D0016CCE4 /* AddressSearchKeywordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressSearchKeywordViewController.h; sourceTree = "<group>"; };
+		AFCCBE0D1D786E5D0016CCE4 /* AddressSearchKeywordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressSearchKeywordViewController.m; sourceTree = "<group>"; };
+		AFCCBE0F1D786E6E0016CCE4 /* AddressSearchAttributesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressSearchAttributesViewController.h; sourceTree = "<group>"; };
+		AFCCBE101D786E6E0016CCE4 /* AddressSearchAttributesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressSearchAttributesViewController.m; sourceTree = "<group>"; };
+		AFCCBE121D786E7E0016CCE4 /* AddressSearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressSearchResultViewController.h; sourceTree = "<group>"; };
+		AFCCBE131D786E7E0016CCE4 /* AddressSearchResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressSearchResultViewController.m; sourceTree = "<group>"; };
+		AFCCBE151D786E8E0016CCE4 /* AddressSearchMapResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressSearchMapResultViewController.h; sourceTree = "<group>"; };
+		AFCCBE161D786E8E0016CCE4 /* AddressSearchMapResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressSearchMapResultViewController.m; sourceTree = "<group>"; };
+		FC36D8911D795FAC00132E81 /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = /Library/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AFB1441D1CC37DC40095EDCE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC36D8921D795FAC00132E81 /* NOSTRASDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AFB144171CC37DC40095EDCE = {
+			isa = PBXGroup;
+			children = (
+				AFB144221CC37DC40095EDCE /* AddressSearchSample */,
+				AFB144211CC37DC40095EDCE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AFB144211CC37DC40095EDCE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AFB144201CC37DC40095EDCE /* AddressSearchSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AFB144221CC37DC40095EDCE /* AddressSearchSample */ = {
+			isa = PBXGroup;
+			children = (
+				FC36D8911D795FAC00132E81 /* NOSTRASDK.framework */,
+				AFB144261CC37DC40095EDCE /* AppDelegate.h */,
+				AFB144271CC37DC40095EDCE /* AppDelegate.m */,
+				AFB1442C1CC37DC40095EDCE /* Main.storyboard */,
+				AFB1442F1CC37DC40095EDCE /* Assets.xcassets */,
+				AFB144311CC37DC40095EDCE /* LaunchScreen.storyboard */,
+				AFB144341CC37DC40095EDCE /* Info.plist */,
+				AFB144231CC37DC40095EDCE /* Supporting Files */,
+				AFCCBE0C1D786E5D0016CCE4 /* AddressSearchKeywordViewController.h */,
+				AFCCBE0D1D786E5D0016CCE4 /* AddressSearchKeywordViewController.m */,
+				AFCCBE0F1D786E6E0016CCE4 /* AddressSearchAttributesViewController.h */,
+				AFCCBE101D786E6E0016CCE4 /* AddressSearchAttributesViewController.m */,
+				AFCCBE121D786E7E0016CCE4 /* AddressSearchResultViewController.h */,
+				AFCCBE131D786E7E0016CCE4 /* AddressSearchResultViewController.m */,
+				AFCCBE151D786E8E0016CCE4 /* AddressSearchMapResultViewController.h */,
+				AFCCBE161D786E8E0016CCE4 /* AddressSearchMapResultViewController.m */,
+			);
+			path = AddressSearchSample;
+			sourceTree = "<group>";
+		};
+		AFB144231CC37DC40095EDCE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AFB144241CC37DC40095EDCE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AFB1441F1CC37DC40095EDCE /* AddressSearchSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFB144371CC37DC40095EDCE /* Build configuration list for PBXNativeTarget "AddressSearchSample" */;
+			buildPhases = (
+				AFB1441C1CC37DC40095EDCE /* Sources */,
+				AFB1441D1CC37DC40095EDCE /* Frameworks */,
+				AFB1441E1CC37DC40095EDCE /* Resources */,
+				AFCCBDE71D786AC40016CCE4 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AddressSearchSample;
+			productName = AddressSearchSample;
+			productReference = AFB144201CC37DC40095EDCE /* AddressSearchSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AFB144181CC37DC40095EDCE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = gissoft;
+				TargetAttributes = {
+					AFB1441F1CC37DC40095EDCE = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = AFB1441B1CC37DC40095EDCE /* Build configuration list for PBXProject "AddressSearchSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AFB144171CC37DC40095EDCE;
+			productRefGroup = AFB144211CC37DC40095EDCE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AFB1441F1CC37DC40095EDCE /* AddressSearchSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AFB1441E1CC37DC40095EDCE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFB144331CC37DC40095EDCE /* LaunchScreen.storyboard in Resources */,
+				AFB144301CC37DC40095EDCE /* Assets.xcassets in Resources */,
+				AFB1442E1CC37DC40095EDCE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AFB1441C1CC37DC40095EDCE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFCCBE111D786E6E0016CCE4 /* AddressSearchAttributesViewController.m in Sources */,
+				AFCCBE171D786E8E0016CCE4 /* AddressSearchMapResultViewController.m in Sources */,
+				AFCCBE141D786E7E0016CCE4 /* AddressSearchResultViewController.m in Sources */,
+				AFB144281CC37DC40095EDCE /* AppDelegate.m in Sources */,
+				AFCCBE0E1D786E5D0016CCE4 /* AddressSearchKeywordViewController.m in Sources */,
+				AFB144251CC37DC40095EDCE /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AFB1442C1CC37DC40095EDCE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFB1442D1CC37DC40095EDCE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AFB144311CC37DC40095EDCE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFB144321CC37DC40095EDCE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AFB144351CC37DC40095EDCE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AFB144361CC37DC40095EDCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AFB144381CC37DC40095EDCE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
+				);
+				INFOPLIST_FILE = AddressSearchSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nostrasdk.AddressSearchSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AFB144391CC37DC40095EDCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
+				);
+				INFOPLIST_FILE = AddressSearchSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nostrasdk.AddressSearchSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AFB1441B1CC37DC40095EDCE /* Build configuration list for PBXProject "AddressSearchSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFB144351CC37DC40095EDCE /* Debug */,
+				AFB144361CC37DC40095EDCE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFB144371CC37DC40095EDCE /* Build configuration list for PBXNativeTarget "AddressSearchSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFB144381CC37DC40095EDCE /* Debug */,
+				AFB144391CC37DC40095EDCE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AFB144181CC37DC40095EDCE /* Project object */;
+}

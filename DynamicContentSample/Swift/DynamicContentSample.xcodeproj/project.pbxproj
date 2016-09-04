@@ -12,11 +12,11 @@
 		AF65F8501CE8A29D00C2E35B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF65F84E1CE8A29D00C2E35B /* Main.storyboard */; };
 		AF65F8521CE8A29D00C2E35B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF65F8511CE8A29D00C2E35B /* Assets.xcassets */; };
 		AF65F8551CE8A29D00C2E35B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF65F8531CE8A29D00C2E35B /* LaunchScreen.storyboard */; };
+		FC2D5CBC1D7C037F00E0C6D8 /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2D5CBB1D7C037F00E0C6D8 /* NOSTRASDK.framework */; };
+		FC2D5CBD1D7C037F00E0C6D8 /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC2D5CBB1D7C037F00E0C6D8 /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FCFB02D51D75742E00145BBE /* DMCListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB02D41D75742E00145BBE /* DMCListViewController.swift */; };
 		FCFB02D71D75744D00145BBE /* DMCDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB02D61D75744D00145BBE /* DMCDetailViewController.swift */; };
 		FCFB02D91D75745B00145BBE /* DMCMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFB02D81D75745B00145BBE /* DMCMapViewController.swift */; };
-		FCFB02DB1D75757E00145BBE /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCFB02DA1D75757E00145BBE /* NOSTRASDK.framework */; };
-		FCFB02DC1D75757E00145BBE /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FCFB02DA1D75757E00145BBE /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,7 +26,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FCFB02DC1D75757E00145BBE /* NOSTRASDK.framework in Embed Frameworks */,
+				FC2D5CBD1D7C037F00E0C6D8 /* NOSTRASDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,10 +41,10 @@
 		AF65F8511CE8A29D00C2E35B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF65F8541CE8A29D00C2E35B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF65F8561CE8A29D00C2E35B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC2D5CBB1D7C037F00E0C6D8 /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = /Library/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<absolute>"; };
 		FCFB02D41D75742E00145BBE /* DMCListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMCListViewController.swift; sourceTree = "<group>"; };
 		FCFB02D61D75744D00145BBE /* DMCDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMCDetailViewController.swift; sourceTree = "<group>"; };
 		FCFB02D81D75745B00145BBE /* DMCMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DMCMapViewController.swift; sourceTree = "<group>"; };
-		FCFB02DA1D75757E00145BBE /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = ../../../../../Documents/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCFB02DB1D75757E00145BBE /* NOSTRASDK.framework in Frameworks */,
+				FC2D5CBC1D7C037F00E0C6D8 /* NOSTRASDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,7 +78,7 @@
 		AF65F8491CE8A29D00C2E35B /* DynamicContentSample */ = {
 			isa = PBXGroup;
 			children = (
-				FCFB02DA1D75757E00145BBE /* NOSTRASDK.framework */,
+				FC2D5CBB1D7C037F00E0C6D8 /* NOSTRASDK.framework */,
 				AF65F84A1CE8A29D00C2E35B /* AppDelegate.swift */,
 				AF65F84C1CE8A29D00C2E35B /* MainDMCViewController.swift */,
 				AF65F84E1CE8A29D00C2E35B /* Main.storyboard */,
@@ -284,8 +284,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(HOME)/Documents/NOSTRASDK/**",
 					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
 				);
 				INFOPLIST_FILE = DynamicContentSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -306,8 +306,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(HOME)/Documents/NOSTRASDK/**",
 					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
 				);
 				INFOPLIST_FILE = DynamicContentSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

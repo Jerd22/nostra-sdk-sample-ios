@@ -2,8 +2,7 @@
 //  ViewController.swift
 //  DynamicContentSample
 //
-//  Created by Itthisak Phueaksri on 5/15/2559 BE.
-//  Copyright © 2559 gissoft. All rights reserved.
+//  Copyright © 2559 Globtech. All rights reserved.
 //
 
 import UIKit

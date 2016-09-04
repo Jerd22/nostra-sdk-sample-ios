@@ -12,19 +12,19 @@
 		AFC2A7A01CC3782900FC6AFA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC2A79E1CC3782900FC6AFA /* Main.storyboard */; };
 		AFC2A7A21CC3782900FC6AFA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFC2A7A11CC3782900FC6AFA /* Assets.xcassets */; };
 		AFC2A7A51CC3782900FC6AFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC2A7A31CC3782900FC6AFA /* LaunchScreen.storyboard */; };
+		FC2D5CD11D7C044800E0C6D8 /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2D5CD01D7C044800E0C6D8 /* NOSTRASDK.framework */; };
+		FC2D5CD21D7C044800E0C6D8 /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC2D5CD01D7C044800E0C6D8 /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FC5569741D6FE377006A8D13 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5569731D6FE377006A8D13 /* DetailViewController.swift */; };
-		FC5569781D6FE3AB006A8D13 /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC5569771D6FE3AB006A8D13 /* NOSTRASDK.framework */; };
-		FC5569791D6FE3AB006A8D13 /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC5569771D6FE3AB006A8D13 /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		AF669B5B1CC4C68D0025AAE2 /* Embed Frameworks */ = {
+		FC8A5FC01D76EA9000637F2D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FC5569791D6FE3AB006A8D13 /* NOSTRASDK.framework in Embed Frameworks */,
+				FC2D5CD21D7C044800E0C6D8 /* NOSTRASDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,8 +39,8 @@
 		AFC2A7A11CC3782900FC6AFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFC2A7A41CC3782900FC6AFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFC2A7A61CC3782900FC6AFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC2D5CD01D7C044800E0C6D8 /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = /Library/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<absolute>"; };
 		FC5569731D6FE377006A8D13 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		FC5569771D6FE3AB006A8D13 /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = /Users/itthisakphueaksri/Documents/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC5569781D6FE3AB006A8D13 /* NOSTRASDK.framework in Frameworks */,
+				FC2D5CD11D7C044800E0C6D8 /* NOSTRASDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,7 +74,7 @@
 		AFC2A7991CC3782800FC6AFA /* IdentifySample */ = {
 			isa = PBXGroup;
 			children = (
-				FC5569771D6FE3AB006A8D13 /* NOSTRASDK.framework */,
+				FC2D5CD01D7C044800E0C6D8 /* NOSTRASDK.framework */,
 				AFC2A79A1CC3782800FC6AFA /* AppDelegate.swift */,
 				AFC2A79C1CC3782800FC6AFA /* IdentifyViewController.swift */,
 				FC5569731D6FE377006A8D13 /* DetailViewController.swift */,
@@ -96,7 +96,7 @@
 				AFC2A7931CC3782800FC6AFA /* Sources */,
 				AFC2A7941CC3782800FC6AFA /* Frameworks */,
 				AFC2A7951CC3782800FC6AFA /* Resources */,
-				AF669B5B1CC4C68D0025AAE2 /* Embed Frameworks */,
+				FC8A5FC01D76EA9000637F2D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -119,7 +119,7 @@
 				TargetAttributes = {
 					AFC2A7961CC3782800FC6AFA = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = JV39BS58TD;
+						DevelopmentTeam = P87AH66VDV;
 					};
 				};
 			};
@@ -276,16 +276,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gissoft DMD (F9EWGQXW5Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gissoft DMD (F9EWGQXW5Q)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
-					"$(HOME)/Documents/NOSTRASDK/**",
-					"$(PROJECT_DIR)/IdentifySample",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
 				);
 				INFOPLIST_FILE = IdentifySample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -295,7 +296,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = nostrasdk.IdentifySample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "44030e33-0c15-49b0-8fde-b280edd8717d";
 			};
 			name = Debug;
 		};
@@ -303,13 +304,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Gissoft DMD (F9EWGQXW5Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Gissoft DMD (F9EWGQXW5Q)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
-					"$(HOME)/Documents/NOSTRASDK/**",
-					"$(PROJECT_DIR)/IdentifySample",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
 				);
 				INFOPLIST_FILE = IdentifySample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -322,7 +323,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = nostrasdk.IdentifySample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "44030e33-0c15-49b0-8fde-b280edd8717d";
 			};
 			name = Release;
 		};

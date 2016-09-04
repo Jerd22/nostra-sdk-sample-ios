@@ -2,8 +2,7 @@
 //  ViewController.swift
 //  MultiModalSample
 //
-//  Created by Itthisak Phueaksri on 5/15/2559 BE.
-//  Copyright © 2559 gissoft. All rights reserved.
+//  Copyright © 2559 Globtech. All rights reserved.
 //
 
 import UIKit
@@ -46,6 +45,7 @@ class MultiModalMainViewController: UIViewController, MarkOnMapDelegate, TravelB
         if segue.destinationViewController is TravelByViewController {
             let travelViewController = segue.destinationViewController as! TravelByViewController;
             travelViewController.delegate = self;
+            
         }
         else if segue.destinationViewController is MarkOnMapViewController {
             let markOnMapViewController = segue.destinationViewController as! MarkOnMapViewController;
@@ -70,6 +70,7 @@ class MultiModalMainViewController: UIViewController, MarkOnMapDelegate, TravelB
         do {
             
             let param = NTMultiModalTransportParamter(stops: stops, travelMode: mode);
+            
             let result = try NTMultiModalTransportService.execute(param)
             var geometry: [AGSGeometry]! = [];
             if result.minute != nil {

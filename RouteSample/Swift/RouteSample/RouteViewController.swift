@@ -2,8 +2,7 @@
 //  ViewController.swift
 //  RouteSample
 //
-//  Created by Itthisak Phueaksri on 4/17/2559 BE.
-//  Copyright © 2559 gissoft. All rights reserved.
+//  Copyright © 2559 Globtech. All rights reserved.
 //
 
 import UIKit
@@ -12,7 +11,7 @@ import NOSTRASDK
 
 class RouteViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDelegate, MarkOnMapDelegate {
 
-    let referrer = "th.co.gissoft.nostrasdk"
+    let referrer = ""
     
     @IBOutlet weak var mapView: AGSMapView!
     @IBOutlet weak var resultView: UIView!

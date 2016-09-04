@@ -12,8 +12,8 @@
 		AF306E121CC1FE8200A986AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF306E101CC1FE8200A986AE /* Main.storyboard */; };
 		AF306E141CC1FE8200A986AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF306E131CC1FE8200A986AE /* Assets.xcassets */; };
 		AF306E171CC1FE8200A986AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF306E151CC1FE8200A986AE /* LaunchScreen.storyboard */; };
-		FC56A1981D6ED4130064FA56 /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC56A1971D6ED4130064FA56 /* NOSTRASDK.framework */; };
-		FC56A1991D6ED4130064FA56 /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC56A1971D6ED4130064FA56 /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC2D5CC21D7C039C00E0C6D8 /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC2D5CC11D7C039C00E0C6D8 /* NOSTRASDK.framework */; };
+		FC2D5CC31D7C039C00E0C6D8 /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC2D5CC11D7C039C00E0C6D8 /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,7 +23,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FC56A1991D6ED4130064FA56 /* NOSTRASDK.framework in Embed Frameworks */,
+				FC2D5CC31D7C039C00E0C6D8 /* NOSTRASDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -38,7 +38,7 @@
 		AF306E131CC1FE8200A986AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF306E161CC1FE8200A986AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF306E181CC1FE8200A986AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC56A1971D6ED4130064FA56 /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = /Users/itthisakphueaksri/Documents/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<absolute>"; };
+		FC2D5CC11D7C039C00E0C6D8 /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = /Library/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC56A1981D6ED4130064FA56 /* NOSTRASDK.framework in Frameworks */,
+				FC2D5CC21D7C039C00E0C6D8 /* NOSTRASDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,7 +72,7 @@
 		AF306E0B1CC1FE8200A986AE /* MapSample */ = {
 			isa = PBXGroup;
 			children = (
-				FC56A1971D6ED4130064FA56 /* NOSTRASDK.framework */,
+				FC2D5CC11D7C039C00E0C6D8 /* NOSTRASDK.framework */,
 				AF306E0C1CC1FE8200A986AE /* AppDelegate.swift */,
 				AF306E0E1CC1FE8200A986AE /* MapViewController.swift */,
 				AF306E101CC1FE8200A986AE /* Main.storyboard */,
@@ -280,7 +280,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
-					"$(HOME)/Documents/NOSTRASDK/**",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
 				);
 				INFOPLIST_FILE = MapSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -307,7 +307,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
-					"$(HOME)/Documents/NOSTRASDK/**",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
 				);
 				INFOPLIST_FILE = MapSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

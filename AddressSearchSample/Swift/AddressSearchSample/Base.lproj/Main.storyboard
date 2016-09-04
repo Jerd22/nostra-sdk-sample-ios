@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lRF-ww-nql">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lRF-ww-nql">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -370,11 +370,16 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_watermark_onmap" translatesAutoresizingMaskIntoConstraints="NO" id="O2u-0V-DiH">
+                                <rect key="frame" x="512" y="531" width="80" height="12"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="O2u-0V-DiH" secondAttribute="trailing" constant="8" id="WTN-Lj-AKm"/>
                             <constraint firstItem="BgS-rk-H1V" firstAttribute="top" secondItem="h4U-Fh-KHF" secondAttribute="bottom" id="bQF-bC-VOg"/>
                             <constraint firstAttribute="trailing" secondItem="BgS-rk-H1V" secondAttribute="trailing" id="grH-Fg-Sxw"/>
+                            <constraint firstItem="QEt-CP-kgd" firstAttribute="top" secondItem="O2u-0V-DiH" secondAttribute="bottom" constant="8" id="pxL-yk-Zuz"/>
                             <constraint firstItem="BgS-rk-H1V" firstAttribute="leading" secondItem="PWz-0u-QLd" secondAttribute="leading" id="um1-uP-ztz"/>
                             <constraint firstItem="QEt-CP-kgd" firstAttribute="top" secondItem="BgS-rk-H1V" secondAttribute="bottom" id="zI3-LQ-rJV"/>
                         </constraints>
@@ -411,6 +416,7 @@
     <resources>
         <image name="ic_details_48pt_3x" width="18" height="18"/>
         <image name="ic_search_48pt_3x" width="18" height="18"/>
+        <image name="logo_watermark_onmap" width="80" height="12"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wbE-vV-yUJ"/>

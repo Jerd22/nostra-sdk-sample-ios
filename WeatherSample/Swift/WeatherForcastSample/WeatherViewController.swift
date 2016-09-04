@@ -2,8 +2,7 @@
 //  ViewController.swift
 //  WeatherForcastSample
 //
-//  Created by Itthisak Phueaksri on 4/17/2559 BE.
-//  Copyright © 2559 gissoft. All rights reserved.
+//  Copyright © 2559 Globtech. All rights reserved.
 //
 
 import UIKit
@@ -12,7 +11,7 @@ import ArcGIS
 
 class WeatherViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapViewTouchDelegate, AGSCalloutDelegate, AGSLayerDelegate {
     
-    let referrer = "";
+    let referrer = ""
     
     @IBOutlet weak var mapView: AGSMapView!
     @IBOutlet weak var weatherView: UIView!
@@ -25,8 +24,8 @@ class WeatherViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapVi
     @IBOutlet weak var lblDateTime: UILabel!
 
     let graphicLayer = AGSGraphicsLayer();
-//    var idenResult: NTIdentifyResult?;
     var weatherResult: NTWeatherResult?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

@@ -2,8 +2,7 @@
 //  AppDelegate.swift
 //  MapSample
 //
-//  Created by Itthisak Phueaksri on 4/16/2559 BE.
-//  Copyright © 2559 gissoft. All rights reserved.
+//  Copyright © 2559 Globtech. All rights reserved.
 //
 
 import UIKit

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wwz-7E-yzl">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="oQm-yV-A8G">
+            <objects>
+                <navigationController id="Wwz-7E-yzl" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NMf-FY-8Ef">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.2470588235" green="0.31764705879999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="pOW-xz-u9x" kind="relationship" relationship="rootViewController" id="guN-OK-qlc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BBA-iU-gSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-514" y="393"/>
+        </scene>
+        <!--ServiceArea-->
+        <scene sceneID="dzw-Ek-i6P">
+            <objects>
+                <viewController id="pOW-xz-u9x" customClass="ServiceAreaViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1cL-rx-QDg"/>
+                        <viewControllerLayoutGuide type="bottom" id="BgI-lc-tii"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pxc-gQ-Xxc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDx-RZ-p7m" customClass="AGSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_watermark_onmap" translatesAutoresizingMaskIntoConstraints="NO" id="HHv-kT-B9N">
+                                        <rect key="frame" x="512" y="580" width="80" height="12"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="HHv-kT-B9N" secondAttribute="bottom" constant="8" id="pVX-ro-SSA"/>
+                                    <constraint firstAttribute="trailing" secondItem="HHv-kT-B9N" secondAttribute="trailing" constant="8" id="pdX-Mv-NUf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rDx-RZ-p7m" firstAttribute="top" secondItem="Pxc-gQ-Xxc" secondAttribute="top" id="aAC-go-jRg"/>
+                            <constraint firstItem="BgI-lc-tii" firstAttribute="top" secondItem="rDx-RZ-p7m" secondAttribute="bottom" id="cJ1-P3-fz3"/>
+                            <constraint firstAttribute="trailing" secondItem="rDx-RZ-p7m" secondAttribute="trailing" id="oEw-m1-beG"/>
+                            <constraint firstItem="rDx-RZ-p7m" firstAttribute="leading" secondItem="Pxc-gQ-Xxc" secondAttribute="leading" id="yLc-yF-fQh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="ServiceArea" id="VGd-wU-YN5"/>
+                    <connections>
+                        <outlet property="_mapView" destination="rDx-RZ-p7m" id="gBY-Lb-8cd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Una-8M-uhc" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="205" y="448"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo_watermark_onmap" width="80" height="12"/>
+    </resources>
+</document>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XnD-Ad-V5C">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XnD-Ad-V5C">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -71,6 +71,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_watermark_onmap" translatesAutoresizingMaskIntoConstraints="NO" id="DDz-37-oel">
+                                <rect key="frame" x="512" y="580" width="80" height="12"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -78,8 +81,10 @@
                             <constraint firstItem="5bH-0g-ORM" firstAttribute="top" secondItem="6XR-mp-xaR" secondAttribute="bottom" id="JuW-Kk-vzQ"/>
                             <constraint firstItem="6XR-mp-xaR" firstAttribute="top" secondItem="L0Q-Z6-62I" secondAttribute="top" id="MCl-nL-tzm"/>
                             <constraint firstItem="6XR-mp-xaR" firstAttribute="leading" secondItem="L0Q-Z6-62I" secondAttribute="leading" id="V9v-5j-iOd"/>
+                            <constraint firstItem="5bH-0g-ORM" firstAttribute="top" secondItem="DDz-37-oel" secondAttribute="bottom" constant="8" id="dCt-C4-YEc"/>
                             <constraint firstAttribute="trailing" secondItem="6XR-mp-xaR" secondAttribute="trailing" id="sIf-Qz-EdJ"/>
                             <constraint firstItem="5bH-0g-ORM" firstAttribute="top" secondItem="0Yg-b7-FTt" secondAttribute="bottom" constant="10" id="sMx-vq-lTn"/>
+                            <constraint firstAttribute="trailing" secondItem="DDz-37-oel" secondAttribute="trailing" constant="8" id="xeh-gR-5Ta"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Closest Facility" id="1n7-ic-x2c"/>
@@ -96,7 +101,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="btn_currentlocation_normal" width="40" height="40"/>
+        <image name="btn_currentlocation_normal" width="80" height="12"/>
         <image name="btn_currentlocation_pressed" width="40" height="40"/>
+        <image name="logo_watermark_onmap" width="80" height="12"/>
     </resources>
 </document>

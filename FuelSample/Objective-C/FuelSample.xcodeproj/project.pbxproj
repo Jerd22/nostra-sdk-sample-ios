@@ -1,0 +1,380 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AFB1448E1CC37DE70095EDCE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB1448D1CC37DE70095EDCE /* main.m */; };
+		AFB144911CC37DE70095EDCE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB144901CC37DE70095EDCE /* AppDelegate.m */; };
+		AFB144971CC37DE70095EDCE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB144951CC37DE70095EDCE /* Main.storyboard */; };
+		AFB144991CC37DE70095EDCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFB144981CC37DE70095EDCE /* Assets.xcassets */; };
+		AFB1449C1CC37DE70095EDCE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFB1449A1CC37DE70095EDCE /* LaunchScreen.storyboard */; };
+		AFCCBE261D78728F0016CCE4 /* FuelAdminPolyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBE251D78728F0016CCE4 /* FuelAdminPolyViewController.m */; };
+		AFCCBE291D7872A10016CCE4 /* FuelMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBE281D7872A10016CCE4 /* FuelMapViewController.m */; };
+		AFCCBE2F1D7872DA0016CCE4 /* FuelResultVenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBE2E1D7872DA0016CCE4 /* FuelResultVenderViewController.m */; };
+		AFCCBE321D7873570016CCE4 /* FuelListAdminPolyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBE311D7873570016CCE4 /* FuelListAdminPolyViewController.m */; };
+		AFCCBE351D78736A0016CCE4 /* FuelResultPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBE341D78736A0016CCE4 /* FuelResultPriceViewController.m */; };
+		FC36D8A11D79729E00132E81 /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC36D8A01D79729E00132E81 /* NOSTRASDK.framework */; };
+		FC36D8A21D79729E00132E81 /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC36D8A01D79729E00132E81 /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AFCCBDF31D786B0B0016CCE4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FC36D8A21D79729E00132E81 /* NOSTRASDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AFB144891CC37DE70095EDCE /* FuelSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuelSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFB1448D1CC37DE70095EDCE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AFB1448F1CC37DE70095EDCE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AFB144901CC37DE70095EDCE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AFB144961CC37DE70095EDCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AFB144981CC37DE70095EDCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AFB1449B1CC37DE70095EDCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AFB1449D1CC37DE70095EDCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFCCBE241D78728F0016CCE4 /* FuelAdminPolyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuelAdminPolyViewController.h; sourceTree = "<group>"; };
+		AFCCBE251D78728F0016CCE4 /* FuelAdminPolyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuelAdminPolyViewController.m; sourceTree = "<group>"; };
+		AFCCBE271D7872A10016CCE4 /* FuelMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuelMapViewController.h; sourceTree = "<group>"; };
+		AFCCBE281D7872A10016CCE4 /* FuelMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuelMapViewController.m; sourceTree = "<group>"; };
+		AFCCBE2D1D7872DA0016CCE4 /* FuelResultVenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuelResultVenderViewController.h; sourceTree = "<group>"; };
+		AFCCBE2E1D7872DA0016CCE4 /* FuelResultVenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuelResultVenderViewController.m; sourceTree = "<group>"; };
+		AFCCBE301D7873570016CCE4 /* FuelListAdminPolyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuelListAdminPolyViewController.h; sourceTree = "<group>"; };
+		AFCCBE311D7873570016CCE4 /* FuelListAdminPolyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuelListAdminPolyViewController.m; sourceTree = "<group>"; };
+		AFCCBE331D78736A0016CCE4 /* FuelResultPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuelResultPriceViewController.h; sourceTree = "<group>"; };
+		AFCCBE341D78736A0016CCE4 /* FuelResultPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuelResultPriceViewController.m; sourceTree = "<group>"; };
+		FC36D8A01D79729E00132E81 /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = ../../../../../../Library/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AFB144861CC37DE70095EDCE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC36D8A11D79729E00132E81 /* NOSTRASDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AFB144801CC37DE70095EDCE = {
+			isa = PBXGroup;
+			children = (
+				FC36D8A01D79729E00132E81 /* NOSTRASDK.framework */,
+				AFB1448B1CC37DE70095EDCE /* FuelSample */,
+				AFB1448A1CC37DE70095EDCE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AFB1448A1CC37DE70095EDCE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AFB144891CC37DE70095EDCE /* FuelSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AFB1448B1CC37DE70095EDCE /* FuelSample */ = {
+			isa = PBXGroup;
+			children = (
+				AFB1448F1CC37DE70095EDCE /* AppDelegate.h */,
+				AFB144901CC37DE70095EDCE /* AppDelegate.m */,
+				AFB144951CC37DE70095EDCE /* Main.storyboard */,
+				AFB144981CC37DE70095EDCE /* Assets.xcassets */,
+				AFB1449A1CC37DE70095EDCE /* LaunchScreen.storyboard */,
+				AFB1449D1CC37DE70095EDCE /* Info.plist */,
+				AFB1448C1CC37DE70095EDCE /* Supporting Files */,
+				AFCCBE241D78728F0016CCE4 /* FuelAdminPolyViewController.h */,
+				AFCCBE251D78728F0016CCE4 /* FuelAdminPolyViewController.m */,
+				AFCCBE271D7872A10016CCE4 /* FuelMapViewController.h */,
+				AFCCBE281D7872A10016CCE4 /* FuelMapViewController.m */,
+				AFCCBE2D1D7872DA0016CCE4 /* FuelResultVenderViewController.h */,
+				AFCCBE2E1D7872DA0016CCE4 /* FuelResultVenderViewController.m */,
+				AFCCBE301D7873570016CCE4 /* FuelListAdminPolyViewController.h */,
+				AFCCBE311D7873570016CCE4 /* FuelListAdminPolyViewController.m */,
+				AFCCBE331D78736A0016CCE4 /* FuelResultPriceViewController.h */,
+				AFCCBE341D78736A0016CCE4 /* FuelResultPriceViewController.m */,
+			);
+			path = FuelSample;
+			sourceTree = "<group>";
+		};
+		AFB1448C1CC37DE70095EDCE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AFB1448D1CC37DE70095EDCE /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AFB144881CC37DE70095EDCE /* FuelSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFB144A01CC37DE70095EDCE /* Build configuration list for PBXNativeTarget "FuelSample" */;
+			buildPhases = (
+				AFB144851CC37DE70095EDCE /* Sources */,
+				AFB144861CC37DE70095EDCE /* Frameworks */,
+				AFB144871CC37DE70095EDCE /* Resources */,
+				AFCCBDF31D786B0B0016CCE4 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FuelSample;
+			productName = FuelSample;
+			productReference = AFB144891CC37DE70095EDCE /* FuelSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AFB144811CC37DE70095EDCE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = gissoft;
+				TargetAttributes = {
+					AFB144881CC37DE70095EDCE = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = AFB144841CC37DE70095EDCE /* Build configuration list for PBXProject "FuelSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AFB144801CC37DE70095EDCE;
+			productRefGroup = AFB1448A1CC37DE70095EDCE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AFB144881CC37DE70095EDCE /* FuelSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AFB144871CC37DE70095EDCE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFB1449C1CC37DE70095EDCE /* LaunchScreen.storyboard in Resources */,
+				AFB144991CC37DE70095EDCE /* Assets.xcassets in Resources */,
+				AFB144971CC37DE70095EDCE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AFB144851CC37DE70095EDCE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFCCBE2F1D7872DA0016CCE4 /* FuelResultVenderViewController.m in Sources */,
+				AFCCBE261D78728F0016CCE4 /* FuelAdminPolyViewController.m in Sources */,
+				AFB144911CC37DE70095EDCE /* AppDelegate.m in Sources */,
+				AFCCBE351D78736A0016CCE4 /* FuelResultPriceViewController.m in Sources */,
+				AFB1448E1CC37DE70095EDCE /* main.m in Sources */,
+				AFCCBE321D7873570016CCE4 /* FuelListAdminPolyViewController.m in Sources */,
+				AFCCBE291D7872A10016CCE4 /* FuelMapViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AFB144951CC37DE70095EDCE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFB144961CC37DE70095EDCE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AFB1449A1CC37DE70095EDCE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFB1449B1CC37DE70095EDCE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AFB1449E1CC37DE70095EDCE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AFB1449F1CC37DE70095EDCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AFB144A11CC37DE70095EDCE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
+				);
+				INFOPLIST_FILE = FuelSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nostrasdk.FuelSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AFB144A21CC37DE70095EDCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
+				);
+				INFOPLIST_FILE = FuelSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nostrasdk.FuelSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AFB144841CC37DE70095EDCE /* Build configuration list for PBXProject "FuelSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFB1449E1CC37DE70095EDCE /* Debug */,
+				AFB1449F1CC37DE70095EDCE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFB144A01CC37DE70095EDCE /* Build configuration list for PBXNativeTarget "FuelSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFB144A11CC37DE70095EDCE /* Debug */,
+				AFB144A21CC37DE70095EDCE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AFB144811CC37DE70095EDCE /* Project object */;
+}

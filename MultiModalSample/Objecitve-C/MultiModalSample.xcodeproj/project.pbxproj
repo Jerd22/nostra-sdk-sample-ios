@@ -1,0 +1,368 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AFCCBDAC1D7866190016CCE4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBDAB1D7866190016CCE4 /* main.m */; };
+		AFCCBDAF1D7866190016CCE4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBDAE1D7866190016CCE4 /* AppDelegate.m */; };
+		AFCCBDB51D7866190016CCE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFCCBDB31D7866190016CCE4 /* Main.storyboard */; };
+		AFCCBDB71D7866190016CCE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFCCBDB61D7866190016CCE4 /* Assets.xcassets */; };
+		AFCCBDBA1D7866190016CCE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFCCBDB81D7866190016CCE4 /* LaunchScreen.storyboard */; };
+		AFCCBE3B1D7873AC0016CCE4 /* MarkOnMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBE3A1D7873AC0016CCE4 /* MarkOnMapViewController.m */; };
+		AFCCBE3E1D7873D50016CCE4 /* TravelByViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBE3D1D7873D50016CCE4 /* TravelByViewController.m */; };
+		AFCCBE411D7873F90016CCE4 /* MultiModalMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBE401D7873F90016CCE4 /* MultiModalMainViewController.m */; };
+		FC36D8A71D7981BD00132E81 /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC36D8A61D7981BD00132E81 /* NOSTRASDK.framework */; };
+		FC36D8A81D7981BD00132E81 /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC36D8A61D7981BD00132E81 /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AFCCBDFB1D786B480016CCE4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FC36D8A81D7981BD00132E81 /* NOSTRASDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AFCCBDA71D7866190016CCE4 /* MultiModalSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiModalSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFCCBDAB1D7866190016CCE4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AFCCBDAD1D7866190016CCE4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AFCCBDAE1D7866190016CCE4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AFCCBDB41D7866190016CCE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AFCCBDB61D7866190016CCE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AFCCBDB91D7866190016CCE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AFCCBDBB1D7866190016CCE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFCCBE391D7873AC0016CCE4 /* MarkOnMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkOnMapViewController.h; sourceTree = "<group>"; };
+		AFCCBE3A1D7873AC0016CCE4 /* MarkOnMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkOnMapViewController.m; sourceTree = "<group>"; };
+		AFCCBE3C1D7873D50016CCE4 /* TravelByViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelByViewController.h; sourceTree = "<group>"; };
+		AFCCBE3D1D7873D50016CCE4 /* TravelByViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelByViewController.m; sourceTree = "<group>"; };
+		AFCCBE3F1D7873F90016CCE4 /* MultiModalMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiModalMainViewController.h; sourceTree = "<group>"; };
+		AFCCBE401D7873F90016CCE4 /* MultiModalMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiModalMainViewController.m; sourceTree = "<group>"; };
+		FC36D8A61D7981BD00132E81 /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = /Library/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AFCCBDA41D7866190016CCE4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC36D8A71D7981BD00132E81 /* NOSTRASDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AFCCBD9E1D7866190016CCE4 = {
+			isa = PBXGroup;
+			children = (
+				AFCCBDA91D7866190016CCE4 /* MultiModalSample */,
+				AFCCBDA81D7866190016CCE4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AFCCBDA81D7866190016CCE4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AFCCBDA71D7866190016CCE4 /* MultiModalSample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AFCCBDA91D7866190016CCE4 /* MultiModalSample */ = {
+			isa = PBXGroup;
+			children = (
+				FC36D8A61D7981BD00132E81 /* NOSTRASDK.framework */,
+				AFCCBDAD1D7866190016CCE4 /* AppDelegate.h */,
+				AFCCBDAE1D7866190016CCE4 /* AppDelegate.m */,
+				AFCCBDB61D7866190016CCE4 /* Assets.xcassets */,
+				AFCCBDBB1D7866190016CCE4 /* Info.plist */,
+				AFCCBDB81D7866190016CCE4 /* LaunchScreen.storyboard */,
+				AFCCBDB31D7866190016CCE4 /* Main.storyboard */,
+				AFCCBE391D7873AC0016CCE4 /* MarkOnMapViewController.h */,
+				AFCCBE3A1D7873AC0016CCE4 /* MarkOnMapViewController.m */,
+				AFCCBDAA1D7866190016CCE4 /* Supporting Files */,
+				AFCCBE3C1D7873D50016CCE4 /* TravelByViewController.h */,
+				AFCCBE3D1D7873D50016CCE4 /* TravelByViewController.m */,
+				AFCCBE3F1D7873F90016CCE4 /* MultiModalMainViewController.h */,
+				AFCCBE401D7873F90016CCE4 /* MultiModalMainViewController.m */,
+			);
+			path = MultiModalSample;
+			sourceTree = "<group>";
+		};
+		AFCCBDAA1D7866190016CCE4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AFCCBDAB1D7866190016CCE4 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AFCCBDA61D7866190016CCE4 /* MultiModalSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFCCBDBE1D7866190016CCE4 /* Build configuration list for PBXNativeTarget "MultiModalSample" */;
+			buildPhases = (
+				AFCCBDA31D7866190016CCE4 /* Sources */,
+				AFCCBDA41D7866190016CCE4 /* Frameworks */,
+				AFCCBDA51D7866190016CCE4 /* Resources */,
+				AFCCBDFB1D786B480016CCE4 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MultiModalSample;
+			productName = MultiModalSample;
+			productReference = AFCCBDA71D7866190016CCE4 /* MultiModalSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AFCCBD9F1D7866190016CCE4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = nostra;
+				TargetAttributes = {
+					AFCCBDA61D7866190016CCE4 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = AFCCBDA21D7866190016CCE4 /* Build configuration list for PBXProject "MultiModalSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AFCCBD9E1D7866190016CCE4;
+			productRefGroup = AFCCBDA81D7866190016CCE4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AFCCBDA61D7866190016CCE4 /* MultiModalSample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AFCCBDA51D7866190016CCE4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFCCBDBA1D7866190016CCE4 /* LaunchScreen.storyboard in Resources */,
+				AFCCBDB71D7866190016CCE4 /* Assets.xcassets in Resources */,
+				AFCCBDB51D7866190016CCE4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AFCCBDA31D7866190016CCE4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFCCBE3B1D7873AC0016CCE4 /* MarkOnMapViewController.m in Sources */,
+				AFCCBDAF1D7866190016CCE4 /* AppDelegate.m in Sources */,
+				AFCCBDAC1D7866190016CCE4 /* main.m in Sources */,
+				AFCCBE411D7873F90016CCE4 /* MultiModalMainViewController.m in Sources */,
+				AFCCBE3E1D7873D50016CCE4 /* TravelByViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AFCCBDB31D7866190016CCE4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFCCBDB41D7866190016CCE4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AFCCBDB81D7866190016CCE4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFCCBDB91D7866190016CCE4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AFCCBDBC1D7866190016CCE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AFCCBDBD1D7866190016CCE4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AFCCBDBF1D7866190016CCE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
+				);
+				INFOPLIST_FILE = MultiModalSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nostrasdk.MultiModalSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AFCCBDC01D7866190016CCE4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(HOME)/Library/SDKs/ArcGIS/iOS/**",
+					"$(LOCAL_LIBRARY_DIR)/NOSTRASDK",
+				);
+				INFOPLIST_FILE = MultiModalSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					ArcGIS,
+					"-l",
+					"c++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nostrasdk.MultiModalSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AFCCBDA21D7866190016CCE4 /* Build configuration list for PBXProject "MultiModalSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFCCBDBC1D7866190016CCE4 /* Debug */,
+				AFCCBDBD1D7866190016CCE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFCCBDBE1D7866190016CCE4 /* Build configuration list for PBXNativeTarget "MultiModalSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFCCBDBF1D7866190016CCE4 /* Debug */,
+				AFCCBDC01D7866190016CCE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AFCCBD9F1D7866190016CCE4 /* Project object */;
+}

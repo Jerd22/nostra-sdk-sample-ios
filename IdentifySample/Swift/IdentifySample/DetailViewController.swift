@@ -2,8 +2,7 @@
 //  DetailViewController.swift
 //  IdentifySample
 //
-//  Created by Itthisak Phueaksri on 5/14/2559 BE.
-//  Copyright © 2559 gissoft. All rights reserved.
+//  Copyright © 2559 Globtech. All rights reserved.
 //
 
 import UIKit
