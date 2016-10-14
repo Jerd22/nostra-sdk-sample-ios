@@ -28,9 +28,9 @@ class IdentifyViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapV
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailSegue" {
-            let detailViewController = segue.destinationViewController as! DetailViewController;
+            let detailViewController = segue.destination as! DetailViewController;
             detailViewController.idenResult = idenResult;
             
         }
@@ -57,11 +57,11 @@ class IdentifyViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapV
                     let mapPermisson = filtered.first;
                     
                     
-                    let url = NSURL(string: mapPermisson!.serviceUrl_L);
+                    let url = URL(string: mapPermisson!.serviceUrl_L);
                     let cred = AGSCredential(token: mapPermisson?.serviceToken_L, referer: referrer);
-                    let tiledLayer = AGSTiledMapServiceLayer(URL: url, credential: cred)
-                    tiledLayer.renderNativeResolution = true;
-                    tiledLayer.delegate = self;
+                    let tiledLayer = AGSTiledMapServiceLayer(url: url, credential: cred)
+                    tiledLayer?.renderNativeResolution = true;
+                    tiledLayer?.delegate = self;
                     
                     mapView.addMapLayer(tiledLayer, withName: mapPermisson!.serviceName);
                 }
@@ -73,25 +73,25 @@ class IdentifyViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapV
         }
     }
     
-    @IBAction func btnCurrentLocation_Clicked(btn: UIButton) {
+    @IBAction func btnCurrentLocation_Clicked(_ btn: UIButton) {
         
-        btn.selected = !btn.selected;
-        mapView.locationDisplay.autoPanMode = btn.selected ? .Default : .Off;
+        btn.isSelected = !btn.isSelected;
+        mapView.locationDisplay.autoPanMode = btn.isSelected ? .default : .off;
         
     }
     
 
     //MARK: Touch Delegate
-    func mapView(mapView: AGSMapView!, didTapAndHoldAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint!, features: [NSObject : AnyObject]!) {
+    func mapView(_ mapView: AGSMapView!, didTapAndHoldAt screen: CGPoint, mapPoint mappoint: AGSPoint!, features: [AnyHashable: Any]!) {
         
         
         if graphicLayer.graphicsCount > 0 {
             graphicLayer.removeAllGraphics();
         }
         
-        let symbol = AGSSimpleMarkerSymbol(color: UIColor.redColor());
-        symbol.style = .X;
-        symbol.size = CGSizeMake(15, 15);
+        let symbol = AGSSimpleMarkerSymbol(color: UIColor.red);
+        symbol?.style = .X;
+        symbol?.size = CGSize(width: 15, height: 15);
         
         let graphic = AGSGraphic(geometry: mappoint, symbol: symbol, attributes: nil);
         
@@ -100,16 +100,16 @@ class IdentifyViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapV
     }
     
     //MARK: Callout delegate
-    func callout(callout: AGSCallout!, willShowForFeature feature: AGSFeature!, layer: AGSLayer!, mapPoint: AGSPoint!) -> Bool {
+    func callout(_ callout: AGSCallout!, willShowFor feature: AGSFeature!, layer: AGSLayer!, mapPoint: AGSPoint!) -> Bool {
         
         var show = false;
         
         do {
-            let point = AGSPoint(fromDecimalDegreesString: mapPoint.decimalDegreesStringWithNumDigits(7),
-                                 withSpatialReference: AGSSpatialReference.wgs84SpatialReference());
+            let point = AGSPoint(fromDecimalDegreesString: mapPoint.decimalDegreesString(withNumDigits: 7),
+                                 with: AGSSpatialReference.wgs84());
 
             
-            let idenParam = NTIdentifyParameter(lat: point.y, lon: point.x);
+            let idenParam = NTIdentifyParameter(lat: (point?.y)!, lon: (point?.x)!);
             
             idenResult = try NTIdentifyService.execute(idenParam);
 
@@ -118,11 +118,11 @@ class IdentifyViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapV
             
             
             if idenResult?.nostraId != nil && idenResult?.nostraId != "" {
-                callout.accessoryButtonType = .DetailDisclosure
-                callout.accessoryButtonHidden = false;
+                callout.accessoryButtonType = .detailDisclosure
+                callout.isAccessoryButtonHidden = false;
             }
             else {
-                callout.accessoryButtonHidden = true;
+                callout.isAccessoryButtonHidden = true;
             }
             
             
@@ -139,30 +139,30 @@ class IdentifyViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapV
     
     
     
-    func didClickAccessoryButtonForCallout(callout: AGSCallout!) {
-        self.performSegueWithIdentifier("detailSegue", sender: nil);
+    func didClickAccessoryButton(for callout: AGSCallout!) {
+        self.performSegue(withIdentifier: "detailSegue", sender: nil);
     }
     
     //MARK: Map view and Layer delegate
-    func mapViewDidLoad(mapView: AGSMapView!) {
+    func mapViewDidLoad(_ mapView: AGSMapView!) {
         mapView.locationDisplay.startDataSource()
         
         let env = AGSEnvelope(xmin: 10458701.000000, ymin: 542977.875000,
                               xmax: 11986879.000000, ymax: 2498290.000000,
-                              spatialReference: AGSSpatialReference.webMercatorSpatialReference());
-        mapView.zoomToEnvelope(env, animated: true);
+                              spatialReference: AGSSpatialReference.webMercator());
+        mapView.zoom(to: env, animated: true);
         
         mapView.addMapLayer(graphicLayer, withName: "GraphicLyaer");
         
     }
 
     
-    func layerDidLoad(layer: AGSLayer!) {
+    func layerDidLoad(_ layer: AGSLayer!) {
         print("\(layer.name) was loaded");
     }
     
-    func layer(layer: AGSLayer!, didFailToLoadWithError error: NSError!) {
-        print("\(layer.name) failed to load by reason: \(error.description)");
+    func layer(_ layer: AGSLayer!, didFailToLoadWithError error: Error!) {
+        print("\(layer.name) failed to load by reason: \(error.localizedDescription)");
     }
     
 }

@@ -43,33 +43,33 @@ class MainDMCViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayer
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "maintoDMCListSegue" {
-            let dmcListViewController = segue.destinationViewController as! DMCListViewController;
+            let dmcListViewController = segue.destination as! DMCListViewController;
             
             dmcListViewController.dmcResult = sender as! NTDynamicContentListResult;
             
         }
     }
     
-    @IBAction func btnLayerMenu_Clicked(sender: AnyObject) {
+    @IBAction func btnLayerMenu_Clicked(_ sender: AnyObject) {
         
         if tableLeading.constant == 0 {
             self.btnHideLayer_Clicked(sender);
             
-            btnHideMenu.hidden = true;
+            btnHideMenu.isHidden = true;
         }
         else {
             UIView.beginAnimations(nil, context: nil)
             UIView.setAnimationDuration(0.75)
             tableLeading.constant = 0;
             UIView.commitAnimations();
-            btnHideMenu.hidden = false;
+            btnHideMenu.isHidden = false;
         }
         
     }
     
-    @IBAction func btnHideLayer_Clicked(sender: AnyObject) {
+    @IBAction func btnHideLayer_Clicked(_ sender: AnyObject) {
         
         UIView.beginAnimations(nil, context: nil)
         UIView.setAnimationDuration(0.75)
@@ -79,14 +79,14 @@ class MainDMCViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayer
 
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let result = results[indexPath.row];
-        self.performSegueWithIdentifier("maintoDMCListSegue", sender: result);
+        self.performSegue(withIdentifier: "maintoDMCListSegue", sender: result);
         
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell");
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell");
         
         let result = results[indexPath.row];
         
@@ -95,12 +95,12 @@ class MainDMCViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayer
         return cell!;
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results != nil ? results.count : 0;
     }
 
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
     
@@ -109,13 +109,13 @@ class MainDMCViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayer
     
     
     //MARK: Layer delegate
-    func mapViewDidLoad(mapView: AGSMapView!) {
+    func mapViewDidLoad(_ mapView: AGSMapView!) {
         mapView.locationDisplay.startDataSource()
         
         let env = AGSEnvelope(xmin: 10458701.000000, ymin: 542977.875000,
                               xmax: 11986879.000000, ymax: 2498290.000000,
-                              spatialReference: AGSSpatialReference.webMercatorSpatialReference());
-        mapView.zoomToEnvelope(env, animated: true);
+                              spatialReference: AGSSpatialReference.webMercator());
+        mapView.zoom(to: env, animated: true);
         
         
     }
@@ -139,10 +139,10 @@ class MainDMCViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayer
                     let mapPermisson = filtered.first;
                     
                     
-                    let url = NSURL(string: mapPermisson!.serviceUrl_L);
+                    let url = URL(string: mapPermisson!.serviceUrl_L);
                     let cred = AGSCredential(token: mapPermisson?.serviceToken_L, referer: referrer);
-                    let tiledLayer = AGSTiledMapServiceLayer(URL: url, credential: cred)
-                    tiledLayer.delegate = self;
+                    let tiledLayer = AGSTiledMapServiceLayer(url: url, credential: cred)
+                    tiledLayer?.delegate = self;
                     
                     mapView.addMapLayer(tiledLayer, withName: mapPermisson!.serviceName);
                 }

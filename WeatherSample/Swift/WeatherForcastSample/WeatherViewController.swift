@@ -42,7 +42,7 @@ class WeatherViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapVi
     
 
     //MARK: Touch Delegate
-    func mapView(mapView: AGSMapView!, didTapAndHoldAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint!, features: [NSObject : AnyObject]!) {
+    func mapView(_ mapView: AGSMapView!, didTapAndHoldAt screen: CGPoint, mapPoint mappoint: AGSPoint!, features: [AnyHashable: Any]!) {
         
         
         if graphicLayer.graphicsCount > 0 {
@@ -56,42 +56,50 @@ class WeatherViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapVi
         graphicLayer.addGraphic(graphic);
         
         
-        mapView.callout.showCalloutAtPoint(mappoint, forFeature: graphic, layer: graphicLayer, animated: true);
+        mapView.callout.show(at: mappoint, for: graphic, layer: graphicLayer, animated: true);
     }
     
     //MARK: Callout delegate
-    func callout(callout: AGSCallout!, willShowForFeature feature: AGSFeature!, layer: AGSLayer!, mapPoint: AGSPoint!) -> Bool {
+    func callout(_ callout: AGSCallout!, willShowFor feature: AGSFeature!, layer: AGSLayer!, mapPoint: AGSPoint!) -> Bool {
         
         do {
-            let point = AGSPoint(fromDecimalDegreesString: mapPoint.decimalDegreesStringWithNumDigits(7),
-                                 withSpatialReference: AGSSpatialReference.wgs84SpatialReference());
+            let point = AGSPoint(fromDecimalDegreesString: mapPoint.decimalDegreesString(withNumDigits: 7),
+                                 with: AGSSpatialReference.wgs84());
             
 
-            let param = NTWeatherParameter(lat: point.y, lon: point.x, frequency: .Daily);
+            let param = NTWeatherParameter(lat: point!.y, lon: point!.x, frequency: .daily);
             
             weatherResult = try NTWeatherService.execute(param);
             
-            if weatherResult?.weather?.count > 0 {
-                let weather = weatherResult?.weather?.first;
-                let image = UIImage(data: NSData(contentsOfURL: NSURL(string: weather!.icon!)!)!);
-                callout.image = image;
-                callout.accessoryButtonHidden = true;
+            if (weatherResult?.weather?.count)! > 0 {
                 
-                let formatter = NSDateFormatter();
-                formatter.dateFormat = "dd MMM hh:mm";
-                imageView.image = image;
-                lblDesc.text = weather?.desc;
-                lblAvgTemp.text = String.init(format: "%1.f˚", (weather?.temperature?.Avg)!);
-                lblMinTemp.text =  String.init(format: "%1.f˚", (weather?.temperature?.Min)!);
-                lblMaxTemp.text =  String.init(format: "%1.f˚", (weather?.temperature?.Max)!);
-                lblLocation.text = weatherResult?.locationName;
-                lblDateTime.text = formatter.stringFromDate((weather?.timeStamp)!);
+                do {
+                    let weather = weatherResult?.weather?.first;
+                    let image = try UIImage(data: Data(contentsOf: URL(string: weather!.icon!)!));
+                    callout.image = image;
+                    callout.isAccessoryButtonHidden = true;
+                    
+                    let formatter = DateFormatter();
+                    formatter.dateFormat = "dd MMM hh:mm";
+                    imageView.image = image;
+                    lblDesc.text = weather?.desc;
+                    lblAvgTemp.text = String.init(format: "%1.f˚", (weather?.temperature?.avg)!);
+                    lblMinTemp.text =  String.init(format: "%1.f˚", (weather?.temperature?.min)!);
+                    lblMaxTemp.text =  String.init(format: "%1.f˚", (weather?.temperature?.max)!);
+                    lblLocation.text = weatherResult?.locationName;
+                    lblDateTime.text = formatter.string(from: (weather?.timeStamp)!);
+                    
+                    weatherView.isHidden = false;
+                }
+                catch {
+                    
+                }
                 
-                weatherView.hidden = false;
+                
             }
             
             
-            callout.accessoryButtonHidden = true;
+            callout.isAccessoryButtonHidden = true;
             
             
         }
@@ -104,18 +112,18 @@ class WeatherViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapVi
         return true;
     }
     
-    func didClickAccessoryButtonForCallout(callout: AGSCallout!) {
-        self.performSegueWithIdentifier("detailSegue", sender: nil);
+    func didClickAccessoryButton(for callout: AGSCallout!) {
+        self.performSegue(withIdentifier: "detailSegue", sender: nil);
     }
     
     //MARK: Layer delegate
-    func mapViewDidLoad(mapView: AGSMapView!) {
+    func mapViewDidLoad(_ mapView: AGSMapView!) {
         mapView.locationDisplay.startDataSource()
         
         let env = AGSEnvelope(xmin: 10458701.000000, ymin: 542977.875000,
                               xmax: 11986879.000000, ymax: 2498290.000000,
-                              spatialReference: AGSSpatialReference.webMercatorSpatialReference());
-        mapView.zoomToEnvelope(env, animated: true);
+                              spatialReference: AGSSpatialReference.webMercator());
+        mapView.zoom(to: env, animated: true);
         
         mapView.addMapLayer(graphicLayer, withName: "GraphicLyaer");
         
@@ -143,10 +151,10 @@ class WeatherViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapVi
                     let mapPermisson = filtered.first;
                     
                     
-                    let url = NSURL(string: mapPermisson!.serviceUrl_L);
+                    let url = URL(string: mapPermisson!.serviceUrl_L);
                     let cred = AGSCredential(token: mapPermisson?.serviceToken_L, referer: referrer);
-                    let tiledLayer = AGSTiledMapServiceLayer(URL: url, credential: cred)
-                    tiledLayer.delegate = self;
+                    let tiledLayer = AGSTiledMapServiceLayer(url: url, credential: cred)
+                    tiledLayer?.delegate = self;
                     
                     mapView.addMapLayer(tiledLayer, withName: mapPermisson!.serviceName);
                 }

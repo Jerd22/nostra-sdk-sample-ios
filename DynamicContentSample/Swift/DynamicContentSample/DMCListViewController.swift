@@ -34,32 +34,37 @@ class DMCListViewController: UITableViewController {
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell");
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell");
         let result = results[indexPath.row];
         cell?.textLabel?.text = result.name_L;
         cell?.detailTextLabel?.text = result.address_L;
+        do {
+            let url = URL(string: result.mapIcon);
+            let data = try Data(contentsOf: url!);
+            let icon = UIImage(data: data);
+            cell?.imageView?.image = icon;
+        }
+        catch {
+            
+        }
         
-        let url = NSURL(string: result.mapIcon);
-        let data = NSData(contentsOfURL: url!);
-        let icon = UIImage(data: data!);
-        cell?.imageView?.image = icon;
         
         return cell!;
         
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let result = results[indexPath.row];
-        self.performSegueWithIdentifier("resulttoDetailSegue", sender: result)
+        self.performSegue(withIdentifier: "resulttoDetailSegue", sender: result)
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results != nil ? results.count : 0;
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
@@ -67,12 +72,12 @@ class DMCListViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
         if segue.identifier == "resulttoDetailSegue" {
-            let detailViewController = segue.destinationViewController as! DMCDetailViewController;
+            let detailViewController = segue.destination as! DMCDetailViewController;
             detailViewController.result = sender as! NTDynamicContentResult;
         }
     }

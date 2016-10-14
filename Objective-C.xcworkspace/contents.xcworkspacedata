@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:WeatherSample/Objective-C/WeatherForecastSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ServiceAreaSample/Objective-C/ServiceAreaSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SearchSample/Objective-C/SearchSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:RouteSample/Objective-C/RouteSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:MultiModalSample/Objecitve-C/MultiModalSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:MapSample/Objective-C/MapSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:IdentifySample/Objecitve-C/IdentifySample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:FuelSample/Objective-C/FuelSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DynamicContentSample/Objective-C/DynamicContentSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ClosestFacilitySample/Objective-C/ClosestFacilitySample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:AddressSearchSample/Objective-C/AddressSearchSample.xcodeproj">
+   </FileRef>
+</Workspace>

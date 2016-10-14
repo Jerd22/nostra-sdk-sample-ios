@@ -17,13 +17,13 @@ class CategoryViewController: UIViewController {
     override func viewDidLoad() {
 
         NTCategoryService.executeAsync { (resultSet, error) in
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 
                 if error == nil {
-                    self.categories = resultSet.results!;
+                    self.categories = resultSet?.results!;
                 }
                 else {
-                    print("error \(error.description)");
+                    print("error \(error?.description)");
                 }
                 self.tableView.reloadData();
                 
@@ -34,23 +34,23 @@ class CategoryViewController: UIViewController {
     
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "categorytoResultSegue" {
-            let resultViewController = segue.destinationViewController as! ResultViewController;
+            let resultViewController = segue.destination as! ResultViewController;
             
             resultViewController.searchByCategory(sender as? String);
         }
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
         let category = categories[indexPath.row];
-        self.performSegueWithIdentifier("categorytoResultSegue", sender: category.code);
+        self.performSegue(withIdentifier: "categorytoResultSegue", sender: category.code);
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell");
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell");
         let category = categories[indexPath.row];
         
         cell?.textLabel?.text = category.name_E;
@@ -59,11 +59,11 @@ class CategoryViewController: UIViewController {
         
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories != nil ? (categories?.count)! : 0;
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int {
         return 1
     }
 

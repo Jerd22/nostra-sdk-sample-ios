@@ -10,8 +10,8 @@ import ArcGIS
 import NOSTRASDK
 
 protocol MarkOnMapDelegate {
-    func didFinishSelectFromLocation(point: AGSPoint);
-    func didFinishSelectToLocation(point: AGSPoint);
+    func didFinishSelectFromLocation(_ point: AGSPoint);
+    func didFinishSelectToLocation(_ point: AGSPoint);
 }
 
 class MarkOnMapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDelegate {
@@ -37,24 +37,24 @@ class MarkOnMapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLay
     }
     
     
-    @IBAction func btnOk_Clicked(sender: AnyObject) {
+    @IBAction func btnOk_Clicked(_ sender: AnyObject) {
         
-        let llPoint = AGSPoint(fromDecimalDegreesString: mapView.mapAnchor.decimalDegreesStringWithNumDigits(7),
-                               withSpatialReference: AGSSpatialReference.wgs84SpatialReference())
+        let llPoint = AGSPoint(fromDecimalDegreesString: mapView.mapAnchor.decimalDegreesString(withNumDigits: 7),
+                               with: AGSSpatialReference.wgs84())
         
         if isFromLocation {
-            delegate?.didFinishSelectFromLocation(llPoint);
+            delegate?.didFinishSelectFromLocation(llPoint!);
             
         } else {
-            delegate?.didFinishSelectToLocation(llPoint);
+            delegate?.didFinishSelectToLocation(llPoint!);
         }
         
-        self.navigationController?.popViewControllerAnimated(true);
+        _ = self.navigationController?.popViewController(animated: true);
         
     }
 
-    @IBAction func btnCancel_Clicked(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true);
+    @IBAction func btnCancel_Clicked(_ sender: AnyObject) {
+        _ = self.navigationController?.popViewController(animated: true);
     }
     
     func initializeMap() {
@@ -75,10 +75,10 @@ class MarkOnMapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLay
                     let mapPermisson = filtered.first;
                     
                     
-                    let url = NSURL(string: mapPermisson!.serviceUrl_L);
+                    let url = URL(string: mapPermisson!.serviceUrl_L);
                     let cred = AGSCredential(token: mapPermisson?.serviceToken_L, referer: referrer);
-                    let tiledLayer = AGSTiledMapServiceLayer(URL: url, credential: cred)
-                    tiledLayer.delegate = self;
+                    let tiledLayer = AGSTiledMapServiceLayer(url: url, credential: cred)
+                    tiledLayer?.delegate = self;
                     
                     mapView.addMapLayer(tiledLayer, withName: mapPermisson!.serviceName);
                 }
@@ -91,23 +91,23 @@ class MarkOnMapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLay
     }
     
     //MARK: Map view and Layer delegate
-    func mapViewDidLoad(mapView: AGSMapView!) {
+    func mapViewDidLoad(_ mapView: AGSMapView!) {
         mapView.locationDisplay.startDataSource()
         
         let env = AGSEnvelope(xmin: 10458701.000000, ymin: 542977.875000,
                               xmax: 11986879.000000, ymax: 2498290.000000,
-                              spatialReference: AGSSpatialReference.webMercatorSpatialReference());
-        mapView.zoomToEnvelope(env, animated: true);
+                              spatialReference: AGSSpatialReference.webMercator());
+        mapView.zoom(to: env, animated: true);
         
     }
     
     
-    func layerDidLoad(layer: AGSLayer!) {
+    func layerDidLoad(_ layer: AGSLayer!) {
         print("\(layer.name) was loaded");
     }
     
-    func layer(layer: AGSLayer!, didFailToLoadWithError error: NSError!) {
-        print("\(layer.name) failed to load by reason: \(error.description)");
+    func layer(_ layer: AGSLayer!, didFailToLoadWithError error: Error!) {
+        print("\(layer.name) failed to load by reason: \(error)");
     }
     
 }

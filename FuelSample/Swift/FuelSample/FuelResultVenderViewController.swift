@@ -40,23 +40,23 @@ class FuelResultVendorViewController: UIViewController, UITableViewDelegate, UIT
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "priceSegue" {
-            let priceViewController = segue.destinationViewController as? FuelResultPriceViewController;
+            let priceViewController = segue.destination as? FuelResultPriceViewController;
             let result = sender as! NTFuelResult;
             priceViewController?.title = result.brandName_L;
             priceViewController?.result = result
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let result = results![indexPath.row];
         
-        self.performSegueWithIdentifier("priceSegue", sender: result);
+        self.performSegue(withIdentifier: "priceSegue", sender: result);
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell");
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell");
         let result = results![indexPath.row];
         
         cell?.textLabel?.text = result.brandName_L;
@@ -65,11 +65,11 @@ class FuelResultVendorViewController: UIViewController, UITableViewDelegate, UIT
         return cell!;
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results != nil ? (results?.count)! : 0;
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
     

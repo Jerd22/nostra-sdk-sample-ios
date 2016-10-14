@@ -17,8 +17,8 @@
 		AFCCBE2F1D7872DA0016CCE4 /* FuelResultVenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBE2E1D7872DA0016CCE4 /* FuelResultVenderViewController.m */; };
 		AFCCBE321D7873570016CCE4 /* FuelListAdminPolyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBE311D7873570016CCE4 /* FuelListAdminPolyViewController.m */; };
 		AFCCBE351D78736A0016CCE4 /* FuelResultPriceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCCBE341D78736A0016CCE4 /* FuelResultPriceViewController.m */; };
-		FC36D8A11D79729E00132E81 /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC36D8A01D79729E00132E81 /* NOSTRASDK.framework */; };
-		FC36D8A21D79729E00132E81 /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC36D8A01D79729E00132E81 /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC3CB63D1DAF738600040631 /* NOSTRASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FC3CB63B1DAF738600040631 /* NOSTRASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC3CB63E1DAF739300040631 /* NOSTRASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC3CB6391DAF736400040631 /* NOSTRASDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,7 +28,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FC36D8A21D79729E00132E81 /* NOSTRASDK.framework in Embed Frameworks */,
+				FC3CB63D1DAF738600040631 /* NOSTRASDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,7 +54,8 @@
 		AFCCBE311D7873570016CCE4 /* FuelListAdminPolyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuelListAdminPolyViewController.m; sourceTree = "<group>"; };
 		AFCCBE331D78736A0016CCE4 /* FuelResultPriceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuelResultPriceViewController.h; sourceTree = "<group>"; };
 		AFCCBE341D78736A0016CCE4 /* FuelResultPriceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuelResultPriceViewController.m; sourceTree = "<group>"; };
-		FC36D8A01D79729E00132E81 /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = ../../../../../../Library/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<group>"; };
+		FC3CB6391DAF736400040631 /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = ../../../../../../../../Library/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<group>"; };
+		FC3CB63B1DAF738600040631 /* NOSTRASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NOSTRASDK.framework; path = /Library/NOSTRASDK/NOSTRASDK.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC36D8A11D79729E00132E81 /* NOSTRASDK.framework in Frameworks */,
+				FC3CB63E1DAF739300040631 /* NOSTRASDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,7 +73,6 @@
 		AFB144801CC37DE70095EDCE = {
 			isa = PBXGroup;
 			children = (
-				FC36D8A01D79729E00132E81 /* NOSTRASDK.framework */,
 				AFB1448B1CC37DE70095EDCE /* FuelSample */,
 				AFB1448A1CC37DE70095EDCE /* Products */,
 			);
@@ -89,6 +89,7 @@
 		AFB1448B1CC37DE70095EDCE /* FuelSample */ = {
 			isa = PBXGroup;
 			children = (
+				FC3CB6391DAF736400040631 /* NOSTRASDK.framework */,
 				AFB1448F1CC37DE70095EDCE /* AppDelegate.h */,
 				AFB144901CC37DE70095EDCE /* AppDelegate.m */,
 				AFB144951CC37DE70095EDCE /* Main.storyboard */,

@@ -25,28 +25,28 @@ class KeywordViewController: UIViewController, UISearchBarDelegate, UITableViewD
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "keywordtoResultSegue" {
-            let resultViewController = segue.destinationViewController as! ResultViewController;
+            let resultViewController = segue.destination as! ResultViewController;
             
             resultViewController.searchByKeyword(sender as? String);
         }
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchText.characters.count > 0 {
             param = NTAutocompleteParameter(keyword: searchText);
             
             NTAutocompleteService.executeAsync(param!) { (resultSet, error) in
                 
-                dispatch_async(dispatch_get_main_queue(), {
+                DispatchQueue.main.async(execute: {
                     if error == nil {
-                        self.keywords = resultSet.results;
+                        self.keywords = resultSet?.results;
                     }
                     else {
                         self.keywords = [];
-                        print("error: \(error.description)");
+                        print("error: \(error?.description)");
                     }
                     self.tableView.reloadData();
                 })
@@ -59,20 +59,20 @@ class KeywordViewController: UIViewController, UISearchBarDelegate, UITableViewD
         
     }
 
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder();
     }
     
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let keyword = keywords![indexPath.row];
-        self.performSegueWithIdentifier("keywordtoResultSegue", sender: keyword.name);
+        self.performSegue(withIdentifier: "keywordtoResultSegue", sender: keyword.name);
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell");
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell");
         let keyword = keywords![indexPath.row];
         
         cell?.textLabel?.text = keyword.name;
@@ -81,11 +81,11 @@ class KeywordViewController: UIViewController, UISearchBarDelegate, UITableViewD
         
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return keywords != nil ? (keywords?.count)! : 0;
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     

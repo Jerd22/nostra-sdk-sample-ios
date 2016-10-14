@@ -18,12 +18,12 @@ class LocalCategoryViewController: UIViewController, UITableViewDataSource, UITa
 
         // Do any additional setup after loading the view.
         NTLocalCategoryService.executeAsync(nil, Completion: { (resultSet, error) in
-            dispatch_async(dispatch_get_main_queue(), { 
+            DispatchQueue.main.async(execute: { 
                 if error == nil {
-                    self.localCateogries = resultSet.results;
+                    self.localCateogries = resultSet?.results;
                 }
                 else {
-                    print("error \(error.description)");
+                    print("error \(error?.description)");
                 }
                 self.tableView.reloadData();
             })
@@ -38,23 +38,23 @@ class LocalCategoryViewController: UIViewController, UITableViewDataSource, UITa
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "localCategorytoResultSegue" {
-            let resultViewController = segue.destinationViewController as! ResultViewController;
+            let resultViewController = segue.destination as! ResultViewController;
             
             resultViewController.searchByLocalCategory(sender as? String);
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let category = localCateogries[indexPath.row];
-        self.performSegueWithIdentifier("localCategorytoResultSegue", sender: category.categoryCode);
+        self.performSegue(withIdentifier: "localCategorytoResultSegue", sender: category.categoryCode);
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell");
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell");
         let category = localCateogries[indexPath.row];
         
         cell?.textLabel?.text = category.name_E;
@@ -63,11 +63,11 @@ class LocalCategoryViewController: UIViewController, UITableViewDataSource, UITa
         
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return localCateogries != nil ? (localCateogries?.count)! : 0;
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     

@@ -23,7 +23,7 @@ class RouteViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDe
     var fromLocation: NTLocation! = nil;
     var toLocation: NTLocation! = nil;
     
-    var vehicle: NTTravelMode = .Car;
+    var vehicle: NTTravelMode = .car;
     
     var result: NTRouteResult?;
     
@@ -38,31 +38,31 @@ class RouteViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDe
     }
     
     
-    @IBAction func btnVehicle_Clicked(sender: AnyObject) {
+    @IBAction func btnVehicle_Clicked(_ sender: AnyObject) {
         let btn = sender as? UIButton;
-        let alertController = UIAlertController(title: "Vehicle", message: nil, preferredStyle: .ActionSheet);
-        alertController.addAction(UIAlertAction(title: "Car", style: .Default, handler: { (action) in
-            self.vehicle = .Car;
-            btn?.setTitle("Car", forState: .Normal);
+        let alertController = UIAlertController(title: "Vehicle", message: nil, preferredStyle: .actionSheet);
+        alertController.addAction(UIAlertAction(title: "Car", style: .default, handler: { (action) in
+            self.vehicle = .car;
+            btn?.setTitle("Car", for: UIControlState());
         }));
-        alertController.addAction(UIAlertAction(title: "Motocycle", style: .Default, handler: { (action) in
-            self.vehicle = .MotorCycle;
-            btn?.setTitle("Motocycle", forState: .Normal);
+        alertController.addAction(UIAlertAction(title: "Motocycle", style: .default, handler: { (action) in
+            self.vehicle = .motorCycle;
+            btn?.setTitle("Motocycle", for: UIControlState());
         }));
-        alertController.addAction(UIAlertAction(title: "Bike", style: .Default, handler: { (action) in
-            self.vehicle = .Bicycle;
-            btn?.setTitle("Bike", forState: .Normal);
+        alertController.addAction(UIAlertAction(title: "Bike", style: .default, handler: { (action) in
+            self.vehicle = .bicycle;
+            btn?.setTitle("Bike", for: UIControlState());
         }));
-        alertController.addAction(UIAlertAction(title: "Walk", style: .Default, handler: { (action) in
-            self.vehicle = .Walk;
-            btn?.setTitle("Walk", forState: .Normal);
+        alertController.addAction(UIAlertAction(title: "Walk", style: .default, handler: { (action) in
+            self.vehicle = .walk;
+            btn?.setTitle("Walk", for: UIControlState());
         }));
         
-        self .presentViewController(alertController, animated: true, completion: nil);
+        self .present(alertController, animated: true, completion: nil);
     }
     
     
-    @IBAction func btnRoute_Clicked(sender: AnyObject) {
+    @IBAction func btnRoute_Clicked(_ sender: AnyObject) {
         if toLocation != nil && fromLocation != nil {
             let param = NTRouteParameter(stops: [fromLocation, toLocation]);
             param.travelMode = vehicle;
@@ -70,9 +70,9 @@ class RouteViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDe
             do {
                 result = try NTRouteService.execute(param)
                 
-                let polyline = AGSPolyline(JSON: result!.getShape(), spatialReference: AGSSpatialReference.wgs84SpatialReference());
-                let geometry = AGSGeometryEngine.defaultGeometryEngine().projectGeometry(polyline,
-                                                                                         toSpatialReference: AGSSpatialReference.webMercatorSpatialReference());
+                let polyline = AGSPolyline(json: result!.getShape(), spatialReference: AGSSpatialReference.wgs84());
+                let geometry = AGSGeometryEngine.default().projectGeometry(polyline,
+                                                                                         to: AGSSpatialReference.webMercator());
                 
                 
                 
@@ -87,9 +87,9 @@ class RouteViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDe
                 graphicLayer.addGraphic(graphic);
                 
                 lblResult.text = String.init(format: "%.1f min (%.1f Km.)", result!.totalTime, result!.totalLength / 1000);
-                resultView.hidden = false;
+                resultView.isHidden = false;
                 
-                mapView.zoomToGeometry(graphic?.geometry, withPadding: 50, animated: true);
+                mapView.zoom(to: graphic?.geometry, withPadding: 50, animated: true);
                 
             }
             catch let error as NSError {
@@ -100,36 +100,36 @@ class RouteViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDe
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fromLocationSegue" || segue.identifier == "toLocationSegue" {
-            let markOnMapViewController = segue.destinationViewController as? MarkOnMapViewController;
+            let markOnMapViewController = segue.destination as? MarkOnMapViewController;
             markOnMapViewController?.delegate = self;
             markOnMapViewController?.isFromLocation = segue.identifier == "fromLocationSegue";
         }
         else if segue.identifier == "routeDetailSegue" {
-            let detailViewController = segue.destinationViewController as? RouteDetailViewController;
+            let detailViewController = segue.destination as? RouteDetailViewController;
             detailViewController?.directions = result!.directions;
         }
     }
     
 
-    func didFinishSelectToLocation(point: AGSPoint) {
-        let llPoint = AGSPoint(fromDecimalDegreesString: point.decimalDegreesStringWithNumDigits(7),
-                               withSpatialReference: AGSSpatialReference.wgs84SpatialReference());
+    func didFinishSelectToLocation(_ point: AGSPoint) {
+        let llPoint = AGSPoint(fromDecimalDegreesString: point.decimalDegreesString(withNumDigits: 7),
+                               with: AGSSpatialReference.wgs84());
         
-        toLocation = NTLocation(name: "location 2", lat: llPoint.y, lon: llPoint.x);
-        btnToLocation.setTitleColor(UIColor.blackColor(), forState: .Normal);
-        btnToLocation.setTitle(toLocation.name, forState: .Normal);
+        toLocation = NTLocation(name: "location 2", lat: (llPoint?.y)!, lon: (llPoint?.x)!);
+        btnToLocation.setTitleColor(UIColor.black, for: UIControlState());
+        btnToLocation.setTitle(toLocation.name, for: .normal);
         
     }
     
-    func didFinishSelectFromLocation(point: AGSPoint) {
-        let llPoint = AGSPoint(fromDecimalDegreesString: point.decimalDegreesStringWithNumDigits(7),
-                               withSpatialReference: AGSSpatialReference.wgs84SpatialReference());
+    func didFinishSelectFromLocation(_ point: AGSPoint) {
+        let llPoint = AGSPoint(fromDecimalDegreesString: point.decimalDegreesString(withNumDigits: 7),
+                               with: AGSSpatialReference.wgs84());
         
-        fromLocation = NTLocation(name: "location1", lat: llPoint.y, lon: llPoint.x);
-        btnFromLocation.setTitleColor(UIColor.blackColor(), forState: .Normal);
-        btnFromLocation.setTitle(fromLocation.name, forState: .Normal);
+        fromLocation = NTLocation(name: "location1", lat: (llPoint?.y)!, lon: (llPoint?.x)!);
+        btnFromLocation.setTitleColor(UIColor.black, for: UIControlState());
+        btnFromLocation.setTitle(fromLocation.name, for: .normal);
     }
     
 
@@ -151,10 +151,10 @@ class RouteViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDe
                     let mapPermisson = filtered.first;
                     
                     
-                    let url = NSURL(string: mapPermisson!.serviceUrl_L);
+                    let url = URL(string: mapPermisson!.serviceUrl_L);
                     let cred = AGSCredential(token: mapPermisson?.serviceToken_L, referer: referrer);
-                    let tiledLayer = AGSTiledMapServiceLayer(URL: url, credential: cred)
-                    tiledLayer.delegate = self;
+                    let tiledLayer = AGSTiledMapServiceLayer(url: url, credential: cred)
+                    tiledLayer?.delegate = self;
                     
                     mapView.addMapLayer(tiledLayer, withName: mapPermisson!.serviceName);
                 }
@@ -167,23 +167,23 @@ class RouteViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDe
     }
     
     //MARK: Map view and Layer delegate
-    func mapViewDidLoad(mapView: AGSMapView!) {
+    func mapViewDidLoad(_ mapView: AGSMapView!) {
         mapView.locationDisplay.startDataSource()
         
         let env = AGSEnvelope(xmin: 10458701.000000, ymin: 542977.875000,
                               xmax: 11986879.000000, ymax: 2498290.000000,
-                              spatialReference: AGSSpatialReference.webMercatorSpatialReference());
-        mapView.zoomToEnvelope(env, animated: true);
+                              spatialReference: AGSSpatialReference.webMercator());
+        mapView.zoom(to: env, animated: true);
         
     }
     
     
-    func layerDidLoad(layer: AGSLayer!) {
+    func layerDidLoad(_ layer: AGSLayer!) {
         print("\(layer.name) was loaded");
     }
     
-    func layer(layer: AGSLayer!, didFailToLoadWithError error: NSError!) {
-        print("\(layer.name) failed to load by reason: \(error.description)");
+    func layer(_ layer: AGSLayer!, didFailToLoadWithError error: Error!) {
+        print("\(layer.name) failed to load by reason: \(error)");
     }
     
 

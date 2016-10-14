@@ -7,9 +7,29 @@
 
 import UIKit
 import NOSTRASDK
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 protocol TravelByDelegate {
-    func didFinishSelectTravelMode(travels: [NTMultiModalTransportMode]);
+    func didFinishSelectTravelMode(_ travels: [NTMultiModalTransportMode]);
 }
 
 class TravelByViewController: UITableViewController {
@@ -27,7 +47,7 @@ class TravelByViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func didMoveToParentViewController(parent: UIViewController?) {
+    override func didMove(toParentViewController parent: UIViewController?) {
         if parent == nil {
             var travels:[NTMultiModalTransportMode] = []
             
@@ -44,14 +64,14 @@ class TravelByViewController: UITableViewController {
     
 
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath);
-        cell?.accessoryType = .Checkmark;
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath);
+        cell?.accessoryType = .checkmark;
     }
     
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath);
-        cell?.accessoryType = .None;
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath);
+        cell?.accessoryType = .none;
     }
     
 }

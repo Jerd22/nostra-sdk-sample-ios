@@ -9,8 +9,8 @@ import UIKit
 import NOSTRASDK
 
 protocol FuelListAdminPolyDelegate {
-    func didFinishSelectProvice(provice: NTAdministrativeResult);
-    func didFinishSelectAmphoe(amphoe: NTAdministrativeResult);
+    func didFinishSelectProvice(_ provice: NTAdministrativeResult);
+    func didFinishSelectAmphoe(_ amphoe: NTAdministrativeResult);
 }
 
 class FuelListAdminPolyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -41,8 +41,8 @@ class FuelListAdminPolyViewController: UIViewController, UITableViewDataSource, 
         
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell");
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell");
         
         let result = results![indexPath.row];
         cell?.textLabel?.text = result.name_L;
@@ -50,7 +50,7 @@ class FuelListAdminPolyViewController: UIViewController, UITableViewDataSource, 
         return cell!;
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let result = results![indexPath.row];
         if adminLevel1 == nil {
             delegate?.didFinishSelectProvice(result);
@@ -59,14 +59,14 @@ class FuelListAdminPolyViewController: UIViewController, UITableViewDataSource, 
         {
             delegate?.didFinishSelectAmphoe(result);
         }
-        self.navigationController?.popViewControllerAnimated(true);
+        _ = self.navigationController?.popViewController(animated: true);
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results != nil ? (results?.count)! : 0;
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
 }

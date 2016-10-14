@@ -11,9 +11,9 @@ class AddressSearchKeywordViewController: UIViewController {
 
     @IBOutlet weak var txtKeyword: UITextField!
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "resultSegue" {
-            let resultViewController = segue.destinationViewController as? AddressSearchResultViewController;
+            let resultViewController = segue.destination as? AddressSearchResultViewController;
             
             let param = NTAddressSearchParameter(keyword: txtKeyword.text!);
             

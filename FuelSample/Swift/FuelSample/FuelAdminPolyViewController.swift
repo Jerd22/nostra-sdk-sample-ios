@@ -17,23 +17,23 @@ class FuelAdminPolyViewController: UIViewController, FuelListAdminPolyDelegate {
     @IBOutlet weak var btnAmphoe: UIButton!
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "provinceSegue" {
-            let adminPolyListViewController = segue.destinationViewController as? FuelListAdminPolyViewController;
+            let adminPolyListViewController = segue.destination as? FuelListAdminPolyViewController;
             adminPolyListViewController?.delegate = self;
             
         } else if segue.identifier == "amphoeSegue" {
-            let adminPolyListViewController = segue.destinationViewController as? FuelListAdminPolyViewController;
+            let adminPolyListViewController = segue.destination as? FuelListAdminPolyViewController;
             adminPolyListViewController?.delegate = self;
             adminPolyListViewController?.adminLevel1 = province?.code;
         } else if segue.identifier == "resultSegue" {
-            let resultViewController = segue.destinationViewController as? FuelResultVendorViewController;
+            let resultViewController = segue.destination as? FuelResultVendorViewController;
             resultViewController?.adminLevel1 = province?.code;
             resultViewController?.adminLevel2 = amphoe?.code;
         }
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         var ret = true;
         
         if identifier == "amphoeSegue" {
@@ -46,14 +46,14 @@ class FuelAdminPolyViewController: UIViewController, FuelListAdminPolyDelegate {
         return ret;
     }
     
-    func didFinishSelectProvice(provice: NTAdministrativeResult) {
+    func didFinishSelectProvice(_ provice: NTAdministrativeResult) {
         self.province = provice;
-        btnProvince.setTitle(province?.name_L, forState: .Normal);
+        btnProvince.setTitle(province?.name_L, for: .normal);
     }
     
-    func didFinishSelectAmphoe(amphoe: NTAdministrativeResult) {
+    func didFinishSelectAmphoe(_ amphoe: NTAdministrativeResult) {
         self.amphoe = amphoe;
-        btnAmphoe.setTitle(amphoe.name_L, forState: .Normal);
+        btnAmphoe.setTitle(amphoe.name_L, for: .normal);
     }
     
 }

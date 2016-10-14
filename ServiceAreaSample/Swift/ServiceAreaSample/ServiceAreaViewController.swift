@@ -39,22 +39,22 @@ class ServiceAreaViewController: UIViewController, AGSMapViewLayerDelegate, AGSM
     }
     
     
-    @IBAction func btnCurrentLocation_Clicked(btn: UIButton) {
+    @IBAction func btnCurrentLocation_Clicked(_ btn: UIButton) {
         
-        btn.selected = !btn.selected;
-        mapView.locationDisplay.autoPanMode = btn.selected ? .Default : .Off;
+        btn.isSelected = !btn.isSelected;
+        mapView.locationDisplay.autoPanMode = btn.isSelected ? .default : .off;
         
     }
     
     
     //MARK: Touch Delegate
-    func mapView(mapView: AGSMapView!, didClickAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint!, features: [NSObject : AnyObject]!) {
+    func mapView(_ mapView: AGSMapView!, didClickAt screen: CGPoint, mapPoint mappoint: AGSPoint!, features: [AnyHashable: Any]!) {
         
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
 
-        alertController.addAction(UIAlertAction(title: "Pin Location", style: .Default) {
+        alertController.addAction(UIAlertAction(title: "Pin Location", style: .default) {
             (alert) in
             
 
@@ -67,12 +67,12 @@ class ServiceAreaViewController: UIViewController, AGSMapViewLayerDelegate, AGSM
             
             self.graphicLayer.addGraphic(graphic);
             
-            let point = AGSPoint(fromDecimalDegreesString: mappoint.decimalDegreesStringWithNumDigits(7),
-                withSpatialReference: AGSSpatialReference.wgs84SpatialReference());
+            let point = AGSPoint(fromDecimalDegreesString: mappoint.decimalDegreesString(withNumDigits: 7),
+                with: AGSSpatialReference.wgs84());
             
             
             
-            let param = NTServiceAreaParameter(facilities: [NTLocation(name: "facility", lat: point.y, lon: point.x)], breaks: [1, 3, 5])
+            let param = NTServiceAreaParameter(facilities: [NTLocation(name: "facility", lat: (point?.y)!, lon: (point?.x)!)], breaks: [1, 3, 5])
             
             do {
                 let result = try NTServiceAreaService.execute(param)
@@ -82,30 +82,30 @@ class ServiceAreaViewController: UIViewController, AGSMapViewLayerDelegate, AGSM
                 if  result.results.count == 3 {
                     
                     area = result.results[2];
-                    var polygon = AGSPolygon(JSON: area.getShape(), spatialReference: AGSSpatialReference.wgs84SpatialReference())
-                    var geometry = AGSGeometryEngine.defaultGeometryEngine().projectGeometry(polygon, toSpatialReference: AGSSpatialReference.webMercatorSpatialReference())
+                    var polygon = AGSPolygon(json: area.getShape(), spatialReference: AGSSpatialReference.wgs84())
+                    var geometry = AGSGeometryEngine.default().projectGeometry(polygon, to: AGSSpatialReference.webMercator())
                     var symbol = AGSSimpleFillSymbol(color: self.redAreaColor, outlineColor: self.redAreaColor);
                     var graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil);
                     
                     self.serviceAreaLayer.addGraphic(graphic);
                     
                     area = result.results[1];
-                    polygon = AGSPolygon(JSON: area.getShape(), spatialReference: AGSSpatialReference.wgs84SpatialReference())
-                    geometry = AGSGeometryEngine.defaultGeometryEngine().projectGeometry(polygon, toSpatialReference: AGSSpatialReference.webMercatorSpatialReference())
+                    polygon = AGSPolygon(json: area.getShape(), spatialReference: AGSSpatialReference.wgs84())
+                    geometry = AGSGeometryEngine.default().projectGeometry(polygon, to: AGSSpatialReference.webMercator())
                     symbol = AGSSimpleFillSymbol(color: self.yellowAreaColor, outlineColor: self.yellowAreaColor);
                     graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil);
                     
                     self.serviceAreaLayer.addGraphic(graphic);
                     
                     area = result.results[0];
-                    polygon = AGSPolygon(JSON: area.getShape(), spatialReference: AGSSpatialReference.wgs84SpatialReference())
-                    geometry = AGSGeometryEngine.defaultGeometryEngine().projectGeometry(polygon, toSpatialReference: AGSSpatialReference.webMercatorSpatialReference())
+                    polygon = AGSPolygon(json: area.getShape(), spatialReference: AGSSpatialReference.wgs84())
+                    geometry = AGSGeometryEngine.default().projectGeometry(polygon, to: AGSSpatialReference.webMercator())
                     symbol = AGSSimpleFillSymbol(color: self.greenAreaColor, outlineColor: self.greenAreaColor);
                     graphic = AGSGraphic(geometry: geometry, symbol: symbol, attributes: nil);
                     
                     self.serviceAreaLayer.addGraphic(graphic);
                     
-                    mapView.zoomToGeometry(geometry, withPadding: 10, animated: true);
+                    mapView.zoom(to: geometry, withPadding: 10, animated: true);
                 }
                 
                 
@@ -119,21 +119,21 @@ class ServiceAreaViewController: UIViewController, AGSMapViewLayerDelegate, AGSM
             
             });
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
-        self.presentViewController(alertController, animated: true, completion: nil);
+        self.present(alertController, animated: true, completion: nil);
 
     }
     
     
     //MARK: Layer delegate
-    func mapViewDidLoad(mapView: AGSMapView!) {
+    func mapViewDidLoad(_ mapView: AGSMapView!) {
         mapView.locationDisplay.startDataSource()
         
         let env = AGSEnvelope(xmin: 10458701.000000, ymin: 542977.875000,
                               xmax: 11986879.000000, ymax: 2498290.000000,
-                              spatialReference: AGSSpatialReference.webMercatorSpatialReference());
-        mapView.zoomToEnvelope(env, animated: true);
+                              spatialReference: AGSSpatialReference.webMercator());
+        mapView.zoom(to: env, animated: true);
         
         mapView.addMapLayer(serviceAreaLayer);
         mapView.addMapLayer(graphicLayer);
@@ -162,10 +162,10 @@ class ServiceAreaViewController: UIViewController, AGSMapViewLayerDelegate, AGSM
                     let mapPermisson = filtered.first;
                     
                     
-                    let url = NSURL(string: mapPermisson!.serviceUrl_L);
+                    let url = URL(string: mapPermisson!.serviceUrl_L);
                     let cred = AGSCredential(token: mapPermisson?.serviceToken_L, referer: referrer);
-                    let tiledLayer = AGSTiledMapServiceLayer(URL: url, credential: cred)
-                    tiledLayer.delegate = self;
+                    let tiledLayer = AGSTiledMapServiceLayer(url: url, credential: cred)
+                    tiledLayer?.delegate = self;
                     
                     mapView.addMapLayer(tiledLayer, withName: mapPermisson!.serviceName);
                 }

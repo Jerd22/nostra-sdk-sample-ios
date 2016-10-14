@@ -26,7 +26,7 @@ class MapResultViewController: UIViewController, AGSLayerDelegate, AGSCalloutDel
     }
     
     //MARK: Callout delegate
-    func callout(callout: AGSCallout!, willShowForFeature feature: AGSFeature!, layer: AGSLayer!, mapPoint: AGSPoint!) -> Bool {
+    func callout(_ callout: AGSCallout!, willShowFor feature: AGSFeature!, layer: AGSLayer!, mapPoint: AGSPoint!) -> Bool {
         
         callout.title = result!.name_L;
         callout.detail = "\(result!.adminLevel3_L), \(result!.adminLevel2_L), \(result!.adminLevel1_L)"
@@ -36,13 +36,13 @@ class MapResultViewController: UIViewController, AGSLayerDelegate, AGSCalloutDel
     
     
     //MARK: layer delegate
-    func layerDidLoad(layer: AGSLayer!) {
+    func layerDidLoad(_ layer: AGSLayer!) {
         if result != nil {
-            let point = AGSPoint(x: result.lon, y: result.lat, spatialReference: AGSSpatialReference.wgs84SpatialReference());
-            let mappoint = AGSPoint(fromDegreesDecimalMinutesString: point.decimalDegreesStringWithNumDigits(7),
-                                    withSpatialReference: AGSSpatialReference.webMercatorSpatialReference());
+            let point = AGSPoint(x: result.lon, y: result.lat, spatialReference: AGSSpatialReference.wgs84());
+            let mappoint = AGSPoint(fromDegreesDecimalMinutesString: point?.decimalDegreesString(withNumDigits: 7),
+                                    with: AGSSpatialReference.webMercator());
             
-            mapView.zoomToScale(10000, withCenterPoint: mappoint, animated: true);
+            mapView.zoom(toScale: 10000, withCenter: mappoint, animated: true);
             
             let graphicLayer = AGSGraphicsLayer();
             mapView.addMapLayer(graphicLayer);
@@ -50,7 +50,7 @@ class MapResultViewController: UIViewController, AGSLayerDelegate, AGSCalloutDel
             let symbol = AGSPictureMarkerSymbol(imageNamed: "pin_map");
             let graphic = AGSGraphic(geometry: mappoint, symbol: symbol, attributes: nil);
             graphicLayer.addGraphic(graphic);
-            mapView.callout.showCalloutAtPoint(mappoint, forFeature: graphic, layer: graphicLayer, animated: true);
+            mapView.callout.show(at: mappoint, for: graphic, layer: graphicLayer, animated: true);
 
         }
     }
@@ -75,10 +75,10 @@ class MapResultViewController: UIViewController, AGSLayerDelegate, AGSCalloutDel
                     let mapPermisson = filtered.first;
                     
                     
-                    let url = NSURL(string: mapPermisson!.serviceUrl_L);
+                    let url = URL(string: mapPermisson!.serviceUrl_L);
                     let cred = AGSCredential(token: mapPermisson?.serviceToken_L, referer: referrer);
-                    let tiledLayer = AGSTiledMapServiceLayer(URL: url, credential: cred)
-                    tiledLayer.delegate = self;
+                    let tiledLayer = AGSTiledMapServiceLayer(url: url, credential: cred)
+                    tiledLayer?.delegate = self;
                     
                     mapView.addMapLayer(tiledLayer, withName: mapPermisson!.serviceName);
                 }
@@ -91,7 +91,7 @@ class MapResultViewController: UIViewController, AGSLayerDelegate, AGSCalloutDel
     }
     
     
-    func layer(layer: AGSLayer!, didFailToLoadWithError error: NSError!) {
-        print("\(layer.name) failed to load by reason: \(error.description)");
+    func layer(_ layer: AGSLayer!, didFailToLoadWithError error: Error!) {
+        print("\(layer.name) failed to load by reason: \(error)");
     }
 }

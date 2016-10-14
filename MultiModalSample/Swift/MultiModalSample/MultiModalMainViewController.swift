@@ -31,7 +31,7 @@ class MultiModalMainViewController: UIViewController, MarkOnMapDelegate, TravelB
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         
     }
@@ -41,21 +41,21 @@ class MultiModalMainViewController: UIViewController, MarkOnMapDelegate, TravelB
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.destinationViewController is TravelByViewController {
-            let travelViewController = segue.destinationViewController as! TravelByViewController;
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is TravelByViewController {
+            let travelViewController = segue.destination as! TravelByViewController;
             travelViewController.delegate = self;
             
         }
-        else if segue.destinationViewController is MarkOnMapViewController {
-            let markOnMapViewController = segue.destinationViewController as! MarkOnMapViewController;
+        else if segue.destination is MarkOnMapViewController {
+            let markOnMapViewController = segue.destination as! MarkOnMapViewController;
             let btn = sender as! UIButton;
             markOnMapViewController.delegate = self;
             markOnMapViewController.isFromLocation = btn.tag == 0;
         }
     }
     
-    @IBAction func btnCalculate_Clicked(sender: AnyObject) {
+    @IBAction func btnCalculate_Clicked(_ sender: AnyObject) {
         
         
         if self.travels.count > 0 {
@@ -65,7 +65,7 @@ class MultiModalMainViewController: UIViewController, MarkOnMapDelegate, TravelB
         
     }
     
-    func CallMultiModalRoute(stops: [NTLocation], mode: [NTMultiModalTransportMode]) {
+    func CallMultiModalRoute(_ stops: [NTLocation], mode: [NTMultiModalTransportMode]) {
         
         do {
             
@@ -77,24 +77,24 @@ class MultiModalMainViewController: UIViewController, MarkOnMapDelegate, TravelB
                 
                 for direction in result.minute.directions! {
                     
-                    let polyline = AGSPolyline(JSON: direction.getShape(),
-                                               spatialReference: AGSSpatialReference.wgs84SpatialReference());
-                    let geo = AGSGeometryEngine.defaultGeometryEngine().projectGeometry(polyline, toSpatialReference: AGSSpatialReference.webMercatorSpatialReference())
+                    let polyline = AGSPolyline(json: direction.getShape(),
+                                               spatialReference: AGSSpatialReference.wgs84());
+                    let geo = AGSGeometryEngine.default().projectGeometry(polyline, to: AGSSpatialReference.webMercator())
                     
-                    geometry.append(geo);
+                    geometry.append(geo!);
                     
                     let symbol = AGSSimpleLineSymbol(color: UIColor(red: direction.type == "Walk" ? 0.0 : 1.0, green: 0, blue: direction.type == "Walk" ? 1.0 : 0.0, alpha: direction.type == "Walk" ? 1.0 : 0.5));
-                    symbol.style = direction.type == "Walk" ? .Dot : .Solid;
-                    symbol.width = 10.0
+                    symbol?.style = direction.type == "Walk" ? .dot : .solid;
+                    symbol?.width = 10.0
                     let graphic = AGSGraphic(geometry: geo, symbol: symbol, attributes: nil);
                     
                     graphicLayer.addGraphic(graphic)
                     
                 }
                 
-                let uGeo = AGSGeometryEngine.defaultGeometryEngine().unionGeometries(geometry);
+                let uGeo = AGSGeometryEngine.default().unionGeometries(geometry);
                 
-                mapView.zoomToGeometry(uGeo, withPadding: 10, animated: true);
+                mapView.zoom(to: uGeo, withPadding: 10, animated: true);
                 
                 
             }
@@ -107,20 +107,20 @@ class MultiModalMainViewController: UIViewController, MarkOnMapDelegate, TravelB
 
     }
     
-    func didFinishSelectTravelMode(travels: [NTMultiModalTransportMode]) {
+    func didFinishSelectTravelMode(_ travels: [NTMultiModalTransportMode]) {
         self.travels = travels;
     }
     
-    func didFinishSelectToLocation(point: AGSPoint) {
+    func didFinishSelectToLocation(_ point: AGSPoint) {
         toLocation = NTLocation(name: "location 2", lat: point.y, lon: point.x)
-        btnToLocation.setTitle("location 2", forState: .Normal);
-        btnToLocation.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        btnToLocation.setTitle("location 2", for: UIControlState());
+        btnToLocation.setTitleColor(UIColor.black, for: UIControlState())
     }
     
-    func didFinishSelectFromLocation(point: AGSPoint) {
+    func didFinishSelectFromLocation(_ point: AGSPoint) {
         fromLocation = NTLocation(name: "location 1", lat: point.y, lon: point.x)
-        btnFromLocation.setTitle("location 1", forState: .Normal);
-        btnFromLocation.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        btnFromLocation.setTitle("location 1", for: UIControlState());
+        btnFromLocation.setTitleColor(UIColor.black, for: UIControlState())
     }
     
 
@@ -142,10 +142,10 @@ class MultiModalMainViewController: UIViewController, MarkOnMapDelegate, TravelB
                 if filtered.count > 0 {
                     let mapPermisson = filtered.first;
 
-                    let url = NSURL(string: mapPermisson!.serviceUrl_L);
+                    let url = URL(string: mapPermisson!.serviceUrl_L);
                     let cred = AGSCredential(token: mapPermisson?.serviceToken_L, referer: referrer);
-                    let tiledLayer = AGSTiledMapServiceLayer(URL: url, credential: cred)
-                    tiledLayer.delegate = self;
+                    let tiledLayer = AGSTiledMapServiceLayer(url: url, credential: cred)
+                    tiledLayer?.delegate = self;
                     
                     mapView.addMapLayer(tiledLayer, withName: mapPermisson!.serviceName);
                 }
@@ -159,13 +159,13 @@ class MultiModalMainViewController: UIViewController, MarkOnMapDelegate, TravelB
     
     
     //MARK: Map view and Layer delegate
-    func mapViewDidLoad(mapView: AGSMapView!) {
+    func mapViewDidLoad(_ mapView: AGSMapView!) {
         mapView.locationDisplay.startDataSource()
         
         let env = AGSEnvelope(xmin: 10458701.000000, ymin: 542977.875000,
                               xmax: 11986879.000000, ymax: 2498290.000000,
-                              spatialReference: AGSSpatialReference.webMercatorSpatialReference());
-        mapView.zoomToEnvelope(env, animated: true);
+                              spatialReference: AGSSpatialReference.webMercator());
+        mapView.zoom(to: env, animated: true);
         
         
         graphicLayer = AGSGraphicsLayer(spatialReference: mapView.spatialReference);
@@ -177,12 +177,12 @@ class MultiModalMainViewController: UIViewController, MarkOnMapDelegate, TravelB
     }
     
     
-    func layerDidLoad(layer: AGSLayer!) {
+    func layerDidLoad(_ layer: AGSLayer!) {
         print("\(layer.name) was loaded");
     }
     
-    func layer(layer: AGSLayer!, didFailToLoadWithError error: NSError!) {
-        print("\(layer.name) failed to load by reason: \(error.description)");
+    func layer(_ layer: AGSLayer!, didFailToLoadWithError error: Error!) {
+        print("\(layer.name) failed to load by reason: \(error)");
     }
 }
 

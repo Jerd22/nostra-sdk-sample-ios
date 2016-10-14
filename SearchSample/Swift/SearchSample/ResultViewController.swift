@@ -25,7 +25,7 @@ class ResultViewController: UIViewController {
         
     }
     
-    func searchByKeyword(keyword: String!) {
+    func searchByKeyword(_ keyword: String!) {
         if keyword != nil && coordinate != nil {
             let param = NTLocationSearchParameter(keyword: keyword,
                                                   lat: (coordinate?.latitude)!,
@@ -37,7 +37,7 @@ class ResultViewController: UIViewController {
         }
     }
     
-    func searchByCategory(category: String!) {
+    func searchByCategory(_ category: String!) {
         if category != nil && coordinate != nil {
             
             let param = NTLocationSearchParameter(categoryCode: [category],
@@ -53,7 +53,7 @@ class ResultViewController: UIViewController {
 
     }
     
-    func searchByLocalCategory(localCategory: String!) {
+    func searchByLocalCategory(_ localCategory: String!) {
         if localCategory != nil && coordinate != nil {
             
             
@@ -70,15 +70,15 @@ class ResultViewController: UIViewController {
     }
     
     
-    func searchWithParam(param: NTLocationSearchParameter) {
+    func searchWithParam(_ param: NTLocationSearchParameter) {
         NTLocationSearchService.executeAsync(param, Completion: { (resultSet, error) in
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 if error == nil {
-                    self.results = resultSet.results;
+                    self.results = resultSet?.results;
                 }
                 else {
                     self.results = [];
-                    print("error: \(error.description)");
+                    print("error: \(error?.description)");
                 }
                 self.tableView.reloadData();
             })
@@ -88,32 +88,32 @@ class ResultViewController: UIViewController {
     
     
     func performUnabletoSearch() {
-        let alertController = UIAlertController(title: "Unable to search", message: "Please check your location.", preferredStyle: .Alert);
-        alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: { (action) in
-            self.navigationController?.popViewControllerAnimated(true);
+        let alertController = UIAlertController(title: "Unable to search", message: "Please check your location.", preferredStyle: .alert);
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
+            _ = self.navigationController?.popViewController(animated: true);
         }));
         
-        self.presentViewController(alertController, animated: true, completion: nil);
+        self.present(alertController, animated: true, completion: nil);
     }
     
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "mapResultSegue" {
-            let mapResultViewController = segue.destinationViewController as? MapResultViewController;
+            let mapResultViewController = segue.destination as? MapResultViewController;
             mapResultViewController?.result = sender as! NTLocationSearchResult;
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
         let result = results![indexPath.row];
-        self.performSegueWithIdentifier("mapResultSegue", sender: result);
+        self.performSegue(withIdentifier: "mapResultSegue", sender: result);
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell");
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell");
         let result = results![indexPath.row];
         
         cell?.textLabel?.text = result.name_L;
@@ -123,11 +123,11 @@ class ResultViewController: UIViewController {
         
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results != nil ? (results?.count)! : 0;
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int {
         return 1
     }
     

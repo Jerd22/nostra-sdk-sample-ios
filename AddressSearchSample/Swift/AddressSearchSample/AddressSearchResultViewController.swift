@@ -18,35 +18,36 @@ class AddressSearchResultViewController: UIViewController, UITableViewDelegate, 
     override func viewDidLoad() {
         
         if addressSearchParam != nil {
+            
             NTAddressSearchService.executeAsync(addressSearchParam) {
                 (resultSet, error) in
                 if error == nil {
-                    self.results = resultSet.results;
+                    self.results = resultSet?.results;
                     self.tableView.reloadData();
                 }
                 else {
-                    print("error: \(error.localizedDescription)")
+                    print("error: \(error?.localizedDescription)")
                 }
             }
         }
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "mapViewSegue" {
-            let mapResultViewController = segue.destinationViewController as? AddressSearchMapResultViewController;
+            let mapResultViewController = segue.destination as? AddressSearchMapResultViewController;
             mapResultViewController!.result = (sender as! NTAddressSearchResult);
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let result = results[indexPath.row];
-        self.performSegueWithIdentifier("mapViewSegue", sender: result)
+        self.performSegue(withIdentifier: "mapViewSegue", sender: result)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell");
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell");
         let result = results[indexPath.row];
         
         cell?.textLabel?.text = "\(result.houseNo), \(result.soi_L)";
@@ -57,11 +58,11 @@ class AddressSearchResultViewController: UIViewController, UITableViewDelegate, 
         
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results != nil ? results.count : 0;
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
     

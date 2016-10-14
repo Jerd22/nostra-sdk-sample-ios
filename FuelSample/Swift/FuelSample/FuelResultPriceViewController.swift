@@ -14,15 +14,15 @@ class FuelResultPriceViewController: UIViewController, UITableViewDataSource, UI
     var result: NTFuelResult?;
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell");
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell");
         
         let lblType = cell?.viewWithTag(101) as! UILabel;
         let lblPrice = cell?.viewWithTag(102) as! UILabel;
         
-        lblType.text = fuelType[indexPath.row];
+        lblType.text = fuelType[(indexPath as NSIndexPath).row];
         
-        switch indexPath.row {
+        switch (indexPath as NSIndexPath).row {
         case 0:
             lblPrice.text = result?.diesel != nil ? String.init(format: "%.2f", (result?.diesel)!) : "-";
         case 1:
@@ -47,11 +47,11 @@ class FuelResultPriceViewController: UIViewController, UITableViewDataSource, UI
         
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fuelType.count;
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
     

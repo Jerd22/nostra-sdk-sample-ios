@@ -22,7 +22,7 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
     var lods: [AGSLOD]?;
     var basemaps:[NTMapPermissionResult] = [];
     var layers:[NTMapPermissionResult] = []
-    var selectedBasemap: NSIndexPath?;
+    var selectedBasemap: IndexPath?;
     var selectedLayer: [String]?;
     
     override func viewDidLoad() {
@@ -35,15 +35,15 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
             
             mapResultSet = try NTMapPermissionService.execute()
             
-            if mapResultSet?.results != nil && mapResultSet?.results.count > 0{
+            if mapResultSet?.results != nil && (mapResultSet?.results.count)! > 0{
                 
-                let mapResultSetSorted = mapResultSet!.results.sort({ (aService, bService) -> Bool in
+                let mapResultSetSorted = mapResultSet!.results.sorted(by: { (aService, bService) -> Bool in
                     return aService.sortIndex < bService.sortIndex;
                 });
                 
                 for mapPermission in mapResultSetSorted {
 
-                    if mapPermission.layerType == .Basemap || mapPermission.layerType == .Imagery {
+                    if mapPermission.layerType == .basemap || mapPermission.layerType == .imagery {
                         basemaps.append(mapPermission);
                     }
                     else {
@@ -54,9 +54,10 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
                         self.addLayer(mapPermission);
                     }
                     else {
-                        dispatch_after(dispatch_time_t(1), dispatch_get_main_queue(), {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            // your function here
                             self.addLayer(mapPermission);
-                        })
+                        }
                     }
                     
                     
@@ -81,22 +82,22 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
     }
     
     
-    func addLayer(mapPermission: NTMapPermissionResult) {
+    func addLayer(_ mapPermission: NTMapPermissionResult) {
         
         var layer: AGSLayer! = nil;
         
-        let url = NSURL(string: mapPermission.serviceUrl_L);
+        let url = URL(string: mapPermission.serviceUrl_L);
         
-        if mapPermission.mapServiceType == .TiledMapService {
+        if mapPermission.mapServiceType == .tiledMapService {
             
             var tiledLyr: AGSTiledMapServiceLayer?
             
             if mapPermission.serviceToken_L != nil && mapPermission.serviceToken_L != "" {
                 let cred = AGSCredential(token: mapPermission.serviceToken_L, referer: referrer);
-                tiledLyr = AGSTiledMapServiceLayer(URL: url, credential: cred)
+                tiledLyr = AGSTiledMapServiceLayer(url: url, credential: cred)
             }
             else {
-                tiledLyr = AGSTiledMapServiceLayer(URL: url);
+                tiledLyr = AGSTiledMapServiceLayer(url: url);
                 
             }
             
@@ -104,16 +105,16 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
             layer = tiledLyr;
             
         }
-        else if mapPermission.mapServiceType == .DynamicMapService {
+        else if mapPermission.mapServiceType == .dynamicMapService {
             
             var dynamicLyr: AGSDynamicMapServiceLayer?;
 
             if mapPermission.serviceToken_L != nil && mapPermission.serviceToken_L != "" {
                 let cred = AGSCredential(token: mapPermission.serviceToken_L, referer: referrer);
-                dynamicLyr = AGSDynamicMapServiceLayer(URL: url, credential: cred)
+                dynamicLyr = AGSDynamicMapServiceLayer(url: url, credential: cred)
             }
             else {
-                dynamicLyr = AGSDynamicMapServiceLayer(URL: url);
+                dynamicLyr = AGSDynamicMapServiceLayer(url: url);
  
             }
             
@@ -122,16 +123,16 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
             layer = dynamicLyr;
 
         }
-        else if mapPermission.mapServiceType == .FeatureService {
+        else if mapPermission.mapServiceType == .featureService {
             
             var featLayer: AGSFeatureLayer?;
             
             if mapPermission.serviceToken_L != nil && mapPermission.serviceToken_L != "" {
                 let cred = AGSCredential(token: mapPermission.serviceToken_L, referer: referrer);
-                featLayer = AGSFeatureLayer(URL: url, mode: .OnDemand, credential: cred);
+                featLayer = AGSFeatureLayer(url: url, mode: .onDemand, credential: cred);
             }
             else {
-                featLayer = AGSFeatureLayer(URL: url, mode: .OnDemand);
+                featLayer = AGSFeatureLayer(url: url, mode: .onDemand);
                 
             }
             featLayer?.delegate = self;
@@ -139,16 +140,16 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
             layer = featLayer;
             
         }
-        else if mapPermission.mapServiceType == .WebMapService {
+        else if mapPermission.mapServiceType == .webMapService {
             
             let wmsLayer: AGSWMSLayer?;
             
             if mapPermission.serviceToken_L != nil && mapPermission.serviceToken_L != "" {
                 let cred = AGSCredential(token: mapPermission.serviceToken_L, referer: referrer);
-                wmsLayer = AGSWMSLayer(URL: url, credential: cred);
+                wmsLayer = AGSWMSLayer(url: url, credential: cred);
             }
             else {
-                wmsLayer = AGSWMSLayer(URL: url);
+                wmsLayer = AGSWMSLayer(url: url);
                 
             }
             
@@ -156,14 +157,14 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
             
             layer = wmsLayer;
         }
-        else if mapPermission.mapServiceType == .OpenSteetMap {
+        else if mapPermission.mapServiceType == .openSteetMap {
             layer = AGSOpenStreetMapLayer();
         }
         
 
         if layer != nil {
             // layer will be visibled, if service id is 2 (Street map Thailand HD).
-            layer.visible = mapPermission.serviceId == 2;
+            layer.isVisible = mapPermission.serviceId == 2;
             mapView.addMapLayer(layer, withName: mapPermission.serviceName);
         }
         else {
@@ -182,7 +183,7 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
         tableViewLeading.constant = 0;
         self.view.layoutIfNeeded();
         UIView.commitAnimations();
-        btnHide.hidden = false;
+        btnHide.isHidden = false;
     }
     
     func hideMenu() {
@@ -191,7 +192,7 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
         tableViewLeading.constant = -260;
         self.view.layoutIfNeeded();
         UIView.commitAnimations();
-        btnHide.hidden = true;
+        btnHide.isHidden = true;
     }
     
     //MARK: UI events
@@ -205,48 +206,48 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
     }
     
     //MARK: Layer delegate
-    func mapViewDidLoad(mapView: AGSMapView!) {
+    func mapViewDidLoad(_ mapView: AGSMapView!) {
         
         mapView.locationDisplay.startDataSource()
         
         let env = AGSEnvelope(xmin: 10458701.000000, ymin: 542977.875000,
                               xmax: 11986879.000000, ymax: 2498290.000000,
-                              spatialReference: AGSSpatialReference.webMercatorSpatialReference());
-        mapView.zoomToEnvelope(env, animated: true);
+                              spatialReference: AGSSpatialReference.webMercator());
+        mapView.zoom(to: env, animated: true);
 
     }
     
-    func layerDidLoad(layer: AGSLayer!) {
+    func layerDidLoad(_ layer: AGSLayer!) {
         print("\(layer.name) was loaded");
     }
     
-    func layer(layer: AGSLayer!, didFailToLoadWithError error: NSError!) {
-        print("\(layer.name) failed to load by reason: \(error.description)");
+    func layer(_ layer: AGSLayer!, didFailToLoadWithError error: Error!) {
+        print("\(layer.name) failed to load by reason: \(error)");
         // remove layer, if it fail to load.
-        mapView.removeMapLayerWithName(layer.name);
+        mapView.removeMapLayer(withName: layer.name);
     }
     
     //MARK: Layer management
-    func visibleLayer(visible: Bool, serviceId: Int) {
+    func visibleLayer(_ visible: Bool, serviceId: Int) {
         
-        if mapResultSet != nil && mapResultSet?.results.count > 0 {
+        if mapResultSet != nil && (mapResultSet?.results.count)! > 0 {
             
             /// Find map
             let filtered = mapResultSet?.results.filter({ (mp) -> Bool in
                 return mp.serviceId == serviceId;
             })
             
-            if filtered?.count > 0 {
+            if (filtered?.count)! > 0 {
                 let mapPermission = filtered?.first;
                 
                 // Manage layer visible
-                let layer = mapView.mapLayerForName(mapPermission?.serviceName);
+                let layer = mapView.mapLayer(forName: mapPermission?.serviceName);
                 if layer != nil {
-                    layer.visible = visible;
+                    layer?.isVisible = visible;
                 }
                 
                 // Manamge depend map visible
-                if mapPermission?.dependMap != nil && mapPermission?.dependMap.count > 0 {
+                if mapPermission?.dependMap != nil && (mapPermission?.dependMap.count)! > 0 {
                     for mapId in (mapPermission?.dependMap)! {
                         
                         self.visibleLayer(visible, serviceId: mapId);
@@ -256,17 +257,17 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
         }
     }
     
-    func findServiceId(serviceName: String) -> Int? {
+    func findServiceId(_ serviceName: String) -> Int? {
         
         var mapPermission: NTMapPermissionResult! = nil;
         
-        if mapResultSet != nil && mapResultSet?.results.count > 0 {
+        if mapResultSet != nil && (mapResultSet?.results.count)! > 0 {
             /// Find map
             let filtered = mapResultSet?.results.filter({ (mp) -> Bool in
                 return mp.serviceName == serviceName;
             })
             
-            if filtered?.count > 0 {
+            if (filtered?.count)! > 0 {
                 mapPermission = filtered?.first;
             }
             
@@ -277,18 +278,18 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
     }
     
     //MARK: Table view delegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.section == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
 
             if selectedBasemap != nil {
-                tableView.deselectRowAtIndexPath(selectedBasemap!, animated: false);
+                tableView.deselectRow(at: selectedBasemap!, animated: false);
             }
             selectedBasemap = indexPath
             
         }
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath);
+        let cell = tableView.cellForRow(at: indexPath);
         
         let serviceId = self.findServiceId((cell?.textLabel?.text)!);
         
@@ -300,10 +301,10 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
         
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
-        if indexPath.section == 1 {
-            let cell = tableView.cellForRowAtIndexPath(indexPath);
+        if (indexPath as NSIndexPath).section == 1 {
+            let cell = tableView.cellForRow(at: indexPath);
             
             let serviceId = self.findServiceId((cell?.textLabel?.text)!);
             
@@ -314,21 +315,21 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
         self.hideMenu();
         
     }
-    @IBAction func btnLocLocation_Clicked(sender: AnyObject) {
+    @IBAction func btnLocLocation_Clicked(_ sender: AnyObject) {
         
     }
     
     //MARK: Table view datasource
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell")!;
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell")!;
         
         var service: NTMapPermissionResult?;
         
-        if indexPath.section == 0 && basemaps.count > 0 {
+        if (indexPath as NSIndexPath).section == 0 && basemaps.count > 0 {
             service = basemaps[indexPath.row];
         }
-        else if indexPath.section >= 0 && layers.count > 0 {
+        else if (indexPath as NSIndexPath).section >= 0 && layers.count > 0 {
             service = layers[indexPath.row];
         }
         
@@ -337,9 +338,9 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
         return cell;
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("header")!;
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "header")!;
         
         if section == 0 && basemaps.count > 0 {
             cell.textLabel?.text = "Basemap"
@@ -347,12 +348,12 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
         else {
             cell.textLabel?.text = "Layer"
         }
-        cell.textLabel?.backgroundColor = UIColor.clearColor()
+        cell.textLabel?.backgroundColor = UIColor.clear
         
         return cell;
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 && basemaps.count > 0 {
             return basemaps.count
@@ -366,7 +367,7 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
 
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         if basemaps.count > 0 && layers.count > 0 {
             return 2;
         }

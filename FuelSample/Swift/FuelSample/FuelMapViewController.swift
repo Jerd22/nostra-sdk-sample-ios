@@ -29,24 +29,24 @@ class FuelMapViewController: UIViewController, AGSLayerDelegate {
         
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated);
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "resultSegue" {
 
-            let point = AGSPoint(fromDecimalDegreesString: mapView.mapAnchor.decimalDegreesStringWithNumDigits(7),
-                                 withSpatialReference: AGSSpatialReference.wgs84SpatialReference());
-            let resultViewController = segue.destinationViewController as? FuelResultVendorViewController;
-            resultViewController?.lat = point.y;
-            resultViewController?.lon = point.x;
+            let point = AGSPoint(fromDecimalDegreesString: mapView.mapAnchor.decimalDegreesString(withNumDigits: 7),
+                                 with: AGSSpatialReference.wgs84());
+            let resultViewController = segue.destination as? FuelResultVendorViewController;
+            resultViewController?.lat = point?.y;
+            resultViewController?.lon = point?.x;
         }
     }
     
     
-    @IBAction func btnOk_Clicked(sender: AnyObject) {
-        self.performSegueWithIdentifier("resultSegue", sender: nil);
+    @IBAction func btnOk_Clicked(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "resultSegue", sender: nil);
         
     }
     
@@ -68,10 +68,10 @@ class FuelMapViewController: UIViewController, AGSLayerDelegate {
                     let mapPermisson = filtered.first;
                     
                     
-                    let url = NSURL(string: mapPermisson!.serviceUrl_L);
+                    let url = URL(string: mapPermisson!.serviceUrl_L);
                     let cred = AGSCredential(token: mapPermisson?.serviceToken_L, referer: referrer);
-                    let tiledLayer = AGSTiledMapServiceLayer(URL: url, credential: cred)
-                    tiledLayer.delegate = self;
+                    let tiledLayer = AGSTiledMapServiceLayer(url: url, credential: cred)
+                    tiledLayer?.delegate = self;
                     
                     mapView.addMapLayer(tiledLayer, withName: mapPermisson!.serviceName);
                 }
@@ -83,11 +83,11 @@ class FuelMapViewController: UIViewController, AGSLayerDelegate {
         }
     }
     
-    func layerDidLoad(layer: AGSLayer!) {
+    func layerDidLoad(_ layer: AGSLayer!) {
         print("\(layer.name) was loaded");
     }
     
-    func layer(layer: AGSLayer!, didFailToLoadWithError error: NSError!) {
-        print("\(layer.name) failed to load by reason: \(error.description)");
+    func layer(_ layer: AGSLayer!, didFailToLoadWithError error: Error!) {
+        print("\(layer.name) failed to load by reason: \(error)");
     }
 }

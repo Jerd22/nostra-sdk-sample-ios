@@ -39,23 +39,23 @@ class DMCDetailViewController: UIViewController {
     }
     
     
-    @IBAction func btnShare_Clicked(sender: AnyObject) {
+    @IBAction func btnShare_Clicked(_ sender: AnyObject) {
         
         do {
             let location = NTLocation(name: result.name_L, lat: result.lat, lon: result.lon);
             let param = NTShortLinkParameter(stops: [location]);
             let shareResult = try NTShortLinkService.execute(param);
             
-            let alertController = UIAlertController(title: "Share", message: shareResult.result, preferredStyle: .Alert);
-            let actionCopy = UIAlertAction(title: "Copy", style: .Default, handler: { (action) in
-                UIPasteboard.generalPasteboard().string = shareResult.result;
+            let alertController = UIAlertController(title: "Share", message: shareResult.result, preferredStyle: .alert);
+            let actionCopy = UIAlertAction(title: "Copy", style: .default, handler: { (action) in
+                UIPasteboard.general.string = shareResult.result;
             })
-            let actionCancel = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil);
+            let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil);
             
             alertController.addAction(actionCopy);
             alertController.addAction(actionCancel);
             
-            self.presentViewController(alertController, animated: true, completion: nil);
+            self.present(alertController, animated: true, completion: nil);
         }
         catch {}
         
@@ -67,11 +67,11 @@ class DMCDetailViewController: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "detailtoMapSegue" {
-            let mapViewController = segue.destinationViewController as! DMCMapViewController;
+            let mapViewController = segue.destination as! DMCMapViewController;
             mapViewController.result = result;
         }
     }

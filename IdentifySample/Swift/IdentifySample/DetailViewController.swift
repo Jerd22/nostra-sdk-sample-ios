@@ -33,10 +33,16 @@ class DetailViewController: UIViewController {
                 lblDetail.text = travel?.history_L;
                 
                 if travel?.picture1 != nil && travel?.picture1 != "" {
-                    let url = NSURL(string: (travel?.picture1)!);
-                    let data = NSData(contentsOfURL: url!);
-                    let image = UIImage(data: data!);
-                    imageView.image = image;
+                    do {
+                        let url = URL(string: (travel?.picture1)!);
+                        let data = try Data(contentsOf: url!);
+                        let image = UIImage(data: data);
+                        imageView.image = image;
+                    }
+                    catch{
+                        
+                    }
+                    
                 }
                 
             }
@@ -48,20 +54,26 @@ class DetailViewController: UIViewController {
                 lblDetail.text = food?.entertainmentService_L;
                 
                 if food?.picture1 != nil && food?.picture1 != "" {
-                    let url = NSURL(string: (food?.picture1)!);
-                    let data = NSData(contentsOfURL: url!);
-                    let image = UIImage(data: data!);
-                    imageView.image = image;
+                    
+                    do {
+                        let url = URL(string: (food?.picture1)!);
+                        let data = try Data(contentsOf: url!);
+                        let image = UIImage(data: data);
+                        imageView.image = image;
+                    }
+                    catch{
+                        
+                    }
                 }
             }
             else {
                 
-                let alertController = UIAlertController(title: "Extra content is not Found", message: nil, preferredStyle: .Alert);
-                alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: { (action) in
-                    self.navigationController?.popViewControllerAnimated(true);
+                let alertController = UIAlertController(title: "Extra content is not Found", message: nil, preferredStyle: .alert);
+                alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
+                    _ = self.navigationController?.popViewController(animated: true);
                 }));
                 
-                self.presentViewController(alertController, animated: true, completion: nil);
+                self.present(alertController, animated: true, completion: nil);
                 
                 
             }

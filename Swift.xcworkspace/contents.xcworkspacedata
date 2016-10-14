@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:AddressSearchSample/Swift/AddressSearchSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ClosestFacilitySample/Swift/ClosestFacilitySample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DynamicContentSample/Swift/DynamicContentSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:FuelSample/Swift/FuelSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:IdentifySample/Swift/IdentifySample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:MapSample/Swift/MapSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:MultiModalSample/Swift/MultiModalSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:RouteSample/Swift/RouteSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SearchSample/Swift/SearchSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ServiceAreaSample/Swift/ServiceAreaSample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:WeatherSample/Swift/WeatherForcastSample.xcodeproj">
+   </FileRef>
+</Workspace>

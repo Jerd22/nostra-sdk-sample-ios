@@ -38,22 +38,22 @@ class FacilityViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapV
     }
     
     
-    @IBAction func btnCurrentLocation_Clicked(btn: UIButton) {
+    @IBAction func btnCurrentLocation_Clicked(_ btn: UIButton) {
         
-        btn.selected = !btn.selected;
-        mapView.locationDisplay.autoPanMode = btn.selected ? .Default : .Off;
+        btn.isSelected = !btn.isSelected;
+        mapView.locationDisplay.autoPanMode = btn.isSelected ? .default : .off;
         
     }
     
     
     //MARK: Touch Delegate
-    func mapView(mapView: AGSMapView!, didClickAtPoint screen: CGPoint, mapPoint mappoint: AGSPoint!, features: [NSObject : AnyObject]!) {
+    func mapView(_ mapView: AGSMapView!, didClickAt screen: CGPoint, mapPoint mappoint: AGSPoint!, features: [AnyHashable: Any]!) {
         
         
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         
-        alertController.addAction(UIAlertAction(title: "Pin Location", style: .Default) {
+        alertController.addAction(UIAlertAction(title: "Pin Location", style: .default) {
             (alert) in
             
             self.facilityLayer.removeAllGraphics();
@@ -64,10 +64,10 @@ class FacilityViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapV
             
             self.facilityLayer.addGraphic(graphic);
             
-            let point = AGSPoint(fromDecimalDegreesString: mappoint.decimalDegreesStringWithNumDigits(7),
-                withSpatialReference: AGSSpatialReference.wgs84SpatialReference());
+            let point = AGSPoint(fromDecimalDegreesString: mappoint.decimalDegreesString(withNumDigits: 7),
+                with: AGSSpatialReference.wgs84());
             
-            let incident = [NTLocation(name: "Incident", lat: point.y, lon: point.x)];
+            let incident = [NTLocation(name: "Incident", lat: (point?.y)!, lon: (point?.x)!)];
             let facilities = [self.facility1, self.facility2, self.facility3, self.facility4];
             let param = NTClosestFacilityParameter(facilities: facilities, incident: incident)
 
@@ -75,12 +75,12 @@ class FacilityViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapV
             do {
                 let result = try NTClosestFacilityService.execute(param)
                 
-                let lineSymbol = AGSSimpleLineSymbol(color: UIColor.lightGrayColor(),width: 4);
+                let lineSymbol = AGSSimpleLineSymbol(color: UIColor.lightGray,width: 4);
                 
                 for facility in result.closestFacilities! {
                     
-                    let line = AGSPolyline(JSON: facility.getShape(), spatialReference: AGSSpatialReference.wgs84SpatialReference())
-                    let geometry = AGSGeometryEngine.defaultGeometryEngine().projectGeometry(line, toSpatialReference: AGSSpatialReference.webMercatorSpatialReference())
+                    let line = AGSPolyline(json: facility.getShape(), spatialReference: AGSSpatialReference.wgs84())
+                    let geometry = AGSGeometryEngine.default().projectGeometry(line, to: AGSSpatialReference.webMercator())
                     let graphic = AGSGraphic(geometry: geometry, symbol: lineSymbol, attributes: nil);
                     self.facilityLayer.addGraphic(graphic);
                 }
@@ -92,65 +92,65 @@ class FacilityViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapV
          
             });
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
-        self.presentViewController(alertController, animated: true, completion: nil);
+        self.present(alertController, animated: true, completion: nil);
         
     }
     
     
     //MARK: Layer delegate
-    func mapViewDidLoad(mapView: AGSMapView!) {
+    func mapViewDidLoad(_ mapView: AGSMapView!) {
         mapView.locationDisplay.startDataSource()
         
         let env = AGSEnvelope(xmin: 10458701.000000, ymin: 542977.875000,
                               xmax: 11986879.000000, ymax: 2498290.000000,
-                              spatialReference: AGSSpatialReference.webMercatorSpatialReference());
-        mapView.zoomToEnvelope(env, animated: true);
+                              spatialReference: AGSSpatialReference.webMercator());
+        mapView.zoom(to: env, animated: true);
         
         mapView.addMapLayer(facilityLayer);
         mapView.addMapLayer(graphicLayer);
         
         //add facility
         let facilityPoint1 = AGSPoint(x: facility1.lon, y: facility1.lat,
-                                      spatialReference: AGSSpatialReference.wgs84SpatialReference());
+                                      spatialReference: AGSSpatialReference.wgs84());
         let facilityPoint2 = AGSPoint(x: facility2.lon, y: facility2.lat,
-                                      spatialReference: AGSSpatialReference.wgs84SpatialReference());
+                                      spatialReference: AGSSpatialReference.wgs84());
         let facilityPoint3 = AGSPoint(x: facility3.lon, y: facility3.lat,
-                                      spatialReference: AGSSpatialReference.wgs84SpatialReference());
+                                      spatialReference: AGSSpatialReference.wgs84());
         let facilityPoint4 = AGSPoint(x: facility4.lon, y: facility4.lat,
-                                      spatialReference: AGSSpatialReference.wgs84SpatialReference());
+                                      spatialReference: AGSSpatialReference.wgs84());
 
-        let fMappoint1 = AGSPoint(fromDecimalDegreesString: facilityPoint1.decimalDegreesStringWithNumDigits(7),
-                                  withSpatialReference: AGSSpatialReference.webMercatorSpatialReference())
-        let fMappoint2 = AGSPoint(fromDecimalDegreesString: facilityPoint2.decimalDegreesStringWithNumDigits(7),
-                                  withSpatialReference: AGSSpatialReference.webMercatorSpatialReference())
-        let fMappoint3 = AGSPoint(fromDecimalDegreesString: facilityPoint3.decimalDegreesStringWithNumDigits(7),
-                                  withSpatialReference: AGSSpatialReference.webMercatorSpatialReference())
-        let fMappoint4 = AGSPoint(fromDecimalDegreesString: facilityPoint4.decimalDegreesStringWithNumDigits(7),
-                                  withSpatialReference: AGSSpatialReference.webMercatorSpatialReference())
+        let fMappoint1 = AGSPoint(fromDecimalDegreesString: facilityPoint1?.decimalDegreesString(withNumDigits: 7),
+                                  with: AGSSpatialReference.webMercator())
+        let fMappoint2 = AGSPoint(fromDecimalDegreesString: facilityPoint2?.decimalDegreesString(withNumDigits: 7),
+                                  with: AGSSpatialReference.webMercator())
+        let fMappoint3 = AGSPoint(fromDecimalDegreesString: facilityPoint3?.decimalDegreesString(withNumDigits: 7),
+                                  with: AGSSpatialReference.webMercator())
+        let fMappoint4 = AGSPoint(fromDecimalDegreesString: facilityPoint4?.decimalDegreesString(withNumDigits: 7),
+                                  with: AGSSpatialReference.webMercator())
         
         let compSymbol = AGSCompositeSymbol();
-        let circleSymbol = AGSSimpleMarkerSymbol(color: UIColor.whiteColor());
-        circleSymbol.outline = AGSSimpleLineSymbol(color: UIColor.blackColor(), width: 2.0);
-        circleSymbol.size = CGSizeMake(30, 30);
-        let textSymbol  = AGSTextSymbol(text: "1", color: UIColor.blackColor());
+        let circleSymbol = AGSSimpleMarkerSymbol(color: UIColor.white);
+        circleSymbol?.outline = AGSSimpleLineSymbol(color: UIColor.black, width: 2.0);
+        circleSymbol?.size = CGSize(width: 30, height: 30);
+        let textSymbol  = AGSTextSymbol(text: "1", color: UIColor.black);
         
         compSymbol.addSymbols([circleSymbol, textSymbol]);
         
         let fGraphic1 = AGSGraphic(geometry: fMappoint1, symbol: compSymbol.copy() as! AGSSymbol, attributes: nil);
-        textSymbol.text = "2";
+        textSymbol?.text = "2";
         let fGraphic2 = AGSGraphic(geometry: fMappoint2, symbol: compSymbol.copy() as! AGSSymbol, attributes: nil);
-        textSymbol.text = "3";
+        textSymbol?.text = "3";
         let fGraphic3 = AGSGraphic(geometry: fMappoint3, symbol: compSymbol.copy() as! AGSSymbol, attributes: nil);
-        textSymbol.text = "4";
+        textSymbol?.text = "4";
         let fGraphic4 = AGSGraphic(geometry: fMappoint4, symbol: compSymbol, attributes: nil);
         
         graphicLayer.addGraphics([fGraphic1, fGraphic2, fGraphic3, fGraphic4]);
         
         //find envelope
-        let envGeo = AGSGeometryEngine.defaultGeometryEngine().unionGeometries([fMappoint1,fMappoint2,fMappoint3,fMappoint4]);
-        mapView.zoomToGeometry(envGeo, withPadding: 100, animated: true);
+        let envGeo = AGSGeometryEngine.default().unionGeometries([fMappoint1,fMappoint2,fMappoint3,fMappoint4]);
+        mapView.zoom(to: envGeo, withPadding: 100, animated: true);
         
     }
     
@@ -175,10 +175,10 @@ class FacilityViewController: UIViewController, AGSMapViewLayerDelegate, AGSMapV
                     let mapPermisson = filtered.first;
                     
                     
-                    let url = NSURL(string: mapPermisson!.serviceUrl_L);
+                    let url = URL(string: mapPermisson!.serviceUrl_L);
                     let cred = AGSCredential(token: mapPermisson?.serviceToken_L, referer: referrer);
-                    let tiledLayer = AGSTiledMapServiceLayer(URL: url, credential: cred)
-                    tiledLayer.delegate = self;
+                    let tiledLayer = AGSTiledMapServiceLayer(url: url, credential: cred)
+                    tiledLayer?.delegate = self;
                     
                     mapView.addMapLayer(tiledLayer, withName: mapPermisson!.serviceName);
                 }
