@@ -100,7 +100,7 @@ class MapViewController: UIViewController, AGSMapViewLayerDelegate, AGSLayerDele
                 tiledLyr = AGSTiledMapServiceLayer(url: url);
                 
             }
-            
+            tiledLyr?.maxScale = 0
             tiledLyr?.delegate = self;
             layer = tiledLyr;
             
