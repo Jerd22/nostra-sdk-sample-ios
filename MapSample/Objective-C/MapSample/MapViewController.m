@@ -166,7 +166,7 @@
             tiledLyr = [[AGSTiledMapServiceLayer alloc] initWithURL:url];
             
         }
-        
+        tiledLyr.maxScale = 0;
         tiledLyr.delegate = self;
         layer = tiledLyr;
     }
